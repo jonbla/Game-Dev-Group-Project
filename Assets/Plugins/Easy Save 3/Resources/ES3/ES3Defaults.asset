@@ -29,10 +29,10 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - FMODUnity
     - FMODUnityResonance
+    - Assembly-CSharp
     - FMODUnityEditor
     - PsdPlugin
     - FMODUnityResonanceEditor
