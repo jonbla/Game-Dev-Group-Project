@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Controller for Enemy prefab
+/// </summary>
 public class Enemy : MonoBehaviour
 {
     public string enemyName;
