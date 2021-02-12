@@ -6,7 +6,7 @@ using UnityEngine;
 /// Backround Script responsible for Background Functions
 /// </summary>
 public class Background : MonoBehaviour
-{
+{    
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
