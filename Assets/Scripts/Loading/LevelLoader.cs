@@ -14,7 +14,8 @@ public class LevelLoader : MonoBehaviour
     public enum level
     {
         LOADING,
-        MAIN_MENU
+        MAIN_MENU,
+        GAME_SCENE
     };
 
     /// <summary>
@@ -27,7 +28,20 @@ public class LevelLoader : MonoBehaviour
     /// </summary>
     void Start()
     {
+        
+    }
+
+    /// <summary>
+    /// Load the Desired Scene
+    /// </summary>
+    public void Load()
+    {
         StartCoroutine(LoadAsynchronously((int)levelToLoad));
+    }
+
+    public void Load(int lvlIndex)
+    {
+        StartCoroutine(LoadAsynchronously(lvlIndex));
     }
 
     /// <summary>
@@ -56,9 +70,9 @@ public class LevelLoader : MonoBehaviour
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / .9f);
+            float progress = Mathf.Clamp01(operation.progress / .9f); //In Unity, the progress bar goes to 90%, the last 10% is a different operation, so we won't include it
 
-            Debug.Log(progress);
+            Debug.Log("Load Progress: "+progress);
             yield return null;
         }
         Animate();
