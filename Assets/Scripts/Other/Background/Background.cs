@@ -4,7 +4,11 @@ using UnityEngine;
 /// Backround Script responsible for Background Functions
 /// </summary>
 public class Background : MonoBehaviour
-{    
+{
+
+    public bool reloadedMain = false;
+
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
