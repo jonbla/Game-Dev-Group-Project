@@ -30,8 +30,12 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Assembly-CSharp-firstpass
+    - FMODUnity
     - Assembly-CSharp
+    - FMODUnityResonance
+    - FMODUnityEditor
     - PsdPlugin
+    - FMODUnityResonanceEditor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
