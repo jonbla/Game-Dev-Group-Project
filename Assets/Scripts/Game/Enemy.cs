@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public string enemyName;
+
     [Range(0, 100)]
     public int health;
 
