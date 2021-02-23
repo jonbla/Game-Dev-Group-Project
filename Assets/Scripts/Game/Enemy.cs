@@ -18,12 +18,17 @@ public class Enemy : MonoBehaviour
     {
         nameText = GetComponentInChildren<TextMeshPro>();
 
-        nameText.text = name;
+        nameText.text = enemyName;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void DoTurn()
+    {
+        print("Enemy turn");
     }
 }
