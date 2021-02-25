@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +5,10 @@ using UnityEngine;
 /// </summary>
 public class Background : MonoBehaviour
 {
+
+    public bool reloadedMain = false;
+
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
