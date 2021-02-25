@@ -20,6 +20,11 @@ public class UIManager : MonoBehaviour
     //Set the default configuration on start
     private void Start()
     {
+        FightMenu();
+    }
+
+    public void FightMenu()
+    {
         Attack.SetActive(true);
         Magic.SetActive(true);
         Flee.SetActive(true);
@@ -63,7 +68,12 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnFlee()
     {
+        if (!FightManager.playerTurn)
+            return;
+        FightManager.playerTurn = false;
         print("AHHHHHHHHHH!");
+
+        FightMenu();
     }
 
     /// <summary>
@@ -72,6 +82,9 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
+        FightManager.playerTurn = false;
+
+        FightMenu();
     }
 
     /// <summary>
@@ -80,6 +93,9 @@ public class UIManager : MonoBehaviour
     public void OnPunch()
     {
         print("Punch!");
+        FightManager.playerTurn = false;
+
+        FightMenu();
     }
 
     /// <summary>
@@ -88,5 +104,8 @@ public class UIManager : MonoBehaviour
     public void OnKick()
     {
         print("Kick!");
+        FightManager.playerTurn = false;
+        
+        FightMenu();
     }
 }
