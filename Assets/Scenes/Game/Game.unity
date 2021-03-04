@@ -955,9 +955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  currentHP: 75
+  currentHP: 100
   maxMP: 10
-  currentMP: 5
+  currentMP: 10
   healthBar: {fileID: 1745145871}
   magicBar: {fileID: 890948488}
 --- !u!1 &376783638
@@ -2356,7 +2356,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: c4feb3df35e2c714d97047f9988cef53, type: 3}
     name: Dark Ghost
   - image: {fileID: 21300000, guid: 56ec89157ec54aa43ab1ae2743b8a031, type: 3}
-    name: Beep Evolution
+    name: Beep
   - image: {fileID: 21300000, guid: 697cb23506ffe76428fe5fd24183cbf7, type: 3}
     name: Evil Ghost
   - image: {fileID: 21300000, guid: 060a283261897ee4e83bbba183bbadeb, type: 3}

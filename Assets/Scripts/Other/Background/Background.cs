@@ -8,7 +8,10 @@ public class Background : MonoBehaviour
 
     public bool reloadedMain = false;
 
-    public int enemyLevel = 0;
+    /// <summary>
+    /// Current Enemy Tier
+    /// </summary>
+    public int enemyTier = 0;
 
 
     void Start()
@@ -33,6 +36,6 @@ public class Background : MonoBehaviour
 
     public void EnemyLevelUp()
     {
-        enemyLevel++;
+        enemyTier++;
     }
 }

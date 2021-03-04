@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightManager : MonoBehaviour, ExtraStructs
+public class FightManager : MonoBehaviour
 {
     [Serializable]
     public struct enemyGraphic
@@ -47,13 +47,15 @@ public class FightManager : MonoBehaviour, ExtraStructs
         newFight = false;
         print("I made an enemy!");
 
+        //Instantiate enemy and keep reference to it 
         clone = Instantiate(enemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        print(enemySprites[EnemyNameSetter.GetEnemyInfo(background.enemyLevel).graphic].name);
 
-        EnemyInfo info = EnemyNameSetter.GetEnemyInfo(background.enemyLevel);
-
-        clone.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
-        clone.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+        //Give enemy an identity
+        //background.EnemyLevelUp();
+        //background.EnemyLevelUp();
+        //background.EnemyLevelUp();
+        //background.EnemyLevelUp();
+        SetEnemyInfo(clone, background.enemyTier);
 
     }
 
@@ -66,5 +68,17 @@ public class FightManager : MonoBehaviour, ExtraStructs
             playerTurn = true;
         }
         lockTurn = false;
+    }
+
+    void SetEnemyInfo(GameObject enemy, int tier)
+    {
+        //Get info about spawned enemy based on tier
+        EnemyInfo info = EnemyNameSetter.GetEnemyInfo(tier);
+
+        //Set name
+        enemy.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
+
+        //Set image
+        enemy.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
     }
 }

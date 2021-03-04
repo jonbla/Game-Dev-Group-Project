@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-	public float maxHP = 100;
-	public float currentHP = 75;
+	public float maxHP;
+	public float currentHP;
 
-	public float maxMP = 10;
-	public float currentMP = 5;
+	public float maxMP;
+	public float currentMP;
 
 	public StatBars healthBar;
 	public StatBars magicBar;
@@ -21,7 +21,7 @@ public class PlayerStats : MonoBehaviour
 
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.UpArrow))
+		/*if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			TakeDamage(-5);
 		}
@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			UseMagic(-1);
-		}
+		}*/
 	}
 
 	void TakeDamage(float dmg)
