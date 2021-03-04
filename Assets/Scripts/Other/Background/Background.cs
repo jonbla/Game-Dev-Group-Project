@@ -13,6 +13,13 @@ public class Background : MonoBehaviour
 
     void Start()
     {
+        //Resolves duplication issue
+        GameObject [] gameObjects = GameObject.FindGameObjectsWithTag("Background");
+        if(gameObjects.Length >= 2)
+        {
+            Destroy(gameObjects[gameObjects.Length - 1].gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -22,5 +29,10 @@ public class Background : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void EnemyLevelUp()
+    {
+        enemyLevel++;
     }
 }

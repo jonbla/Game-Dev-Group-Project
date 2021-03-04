@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightManager : MonoBehaviour
+public class FightManager : MonoBehaviour, ExtraStructs
 {
     // Start is called before the first frame update
     public static bool playerTurn;
@@ -11,6 +11,7 @@ public class FightManager : MonoBehaviour
     public GameObject enemy;
     private GameObject clone;
 
+    Background background;
 
     private static bool lockTurn;
     void Start()
@@ -18,6 +19,8 @@ public class FightManager : MonoBehaviour
         playerTurn = true;
         newFight = true;
         lockTurn = false;
+
+        background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,9 @@ public class FightManager : MonoBehaviour
         print("I made an enemy!");
 
         clone = Instantiate(enemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        clone.GetComponent<Enemy>().enemyName = "test";
+        clone.GetComponent<Enemy>().enemyName = EnemyNameSetter.GetEnemyInfo(background.enemyLevel).name;
+        
+        
     }
 
     void HandleTurn()
