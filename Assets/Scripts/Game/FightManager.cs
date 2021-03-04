@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour, ExtraStructs
 {
-    // Start is called before the first frame update
+    [Serializable]
+    public struct enemyGraphic
+    {
+        public Sprite image;
+        public string name;
+    }
+
     public static bool playerTurn;
     public static bool newFight;
     
     public GameObject enemy;
-    private GameObject clone;
+    private GameObject clone;    
+
+    [Space]
+    public enemyGraphic[] enemySprites;
 
     Background background;
 
@@ -38,9 +48,13 @@ public class FightManager : MonoBehaviour, ExtraStructs
         print("I made an enemy!");
 
         clone = Instantiate(enemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        clone.GetComponent<Enemy>().enemyName = EnemyNameSetter.GetEnemyInfo(background.enemyLevel).name;
-        
-        
+        print(enemySprites[EnemyNameSetter.GetEnemyInfo(background.enemyLevel).graphic].name);
+
+        EnemyInfo info = EnemyNameSetter.GetEnemyInfo(background.enemyLevel);
+
+        clone.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
+        clone.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+
     }
 
     void HandleTurn()

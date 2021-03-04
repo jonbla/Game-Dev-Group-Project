@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyInfo
 {
-    public string name;
-    public int sprite;
+    public int graphic;
 }
 
 public static class EnemyNameSetter
@@ -20,9 +19,14 @@ public static class EnemyNameSetter
     public static EnemyInfo GetEnemyInfo(int tier)
     {
         EnemyInfo info = new EnemyInfo();
-
-        info.name = names[tier,Random.Range(0,3)];
-        info.sprite = 1;
+        if (tier < 4)
+        {
+            info.graphic = tier + Random.Range(0, 3);
+        }
+        else
+        {
+            info.graphic = 17;
+        }
 
         return info;
     }
