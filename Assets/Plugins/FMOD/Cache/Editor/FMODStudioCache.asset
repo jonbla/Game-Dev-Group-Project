@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637492480424787195
+  lastModified: 637491116995688842
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -42,7 +42,7 @@ MonoBehaviour:
   - {fileID: 5141675913517865930}
   StringsBanks:
   - {fileID: -6904096426751408831}
-  stringsBankWriteTime: 637492480424787195
+  stringsBankWriteTime: 637491116995688842
   cacheVersion: 6
 --- !u!114 &5141675913517865930
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637492480424757276
+  lastModified: 637491116995718811
   LoadResult: 0
   FileSizes: []
   Exists: 1
