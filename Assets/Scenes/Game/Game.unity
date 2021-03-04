@@ -955,9 +955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  currentHP: 75
+  currentHP: 100
   maxMP: 10
-  currentMP: 5
+  currentMP: 10
   healthBar: {fileID: 1745145871}
   magicBar: {fileID: 890948488}
 --- !u!1 &376783638
@@ -2336,6 +2336,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7029826332452243148, guid: a4eb0c7732b5d6048b709fc9c37a3a02, type: 3}
+  enemySprites:
+  - image: {fileID: 21300000, guid: 92d139411519b2743b7584590b70b346, type: 3}
+    name: Bat
+  - image: {fileID: 21300000, guid: cdee31ea7d6f509408b91a78d75c0933, type: 3}
+    name: Beholder
+  - image: {fileID: 21300000, guid: 610648c75f69fa843b061446e6623a58, type: 3}
+    name: Blue Bat
+  - image: {fileID: 21300000, guid: 37a2617ca6e5f554e84b3d119fbaecfe, type: 3}
+    name: Glaring Eye
+  - image: {fileID: 21300000, guid: 143f2b3e4b409fe4bb83c6d8280d494c, type: 3}
+    name: Dark Slime
+  - image: {fileID: 21300000, guid: 0e22f9d46e268c446864aa4529c95432, type: 3}
+    name: Brain Slime
+  - image: {fileID: 21300000, guid: 27439388b504d8e488e304c10dcfd1ba, type: 3}
+    name: Clay Slime
+  - image: {fileID: 21300000, guid: c638d3edb10c9b44d9a5d38e9dee3ac5, type: 3}
+    name: Elder Slime
+  - image: {fileID: 21300000, guid: c4feb3df35e2c714d97047f9988cef53, type: 3}
+    name: Dark Ghost
+  - image: {fileID: 21300000, guid: 56ec89157ec54aa43ab1ae2743b8a031, type: 3}
+    name: Beep
+  - image: {fileID: 21300000, guid: 697cb23506ffe76428fe5fd24183cbf7, type: 3}
+    name: Evil Ghost
+  - image: {fileID: 21300000, guid: 060a283261897ee4e83bbba183bbadeb, type: 3}
+    name: Floating Skull
+  - image: {fileID: 21300000, guid: aa1b3013bfbbde248819f58106e9a86b, type: 3}
+    name: CentiDragon
+  - image: {fileID: 21300000, guid: 124a74283733c8d4e822bb2de0c11367, type: 3}
+    name: Dragon Horn
+  - image: {fileID: 21300000, guid: 4ca1d57b88546e74db0fd8814067142a, type: 3}
+    name: Boss Dragon
+  - image: {fileID: 21300000, guid: f3188a8b45d2d5349842fca792bfd06d, type: 3}
+    name: Cockatrice
+  - image: {fileID: 21300000, guid: 36888106db0264946b8effc052ea6d62, type: 3}
+    name: Dark Lord
 --- !u!224 &890948487 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3028816694922552610, guid: 5f2ba7de659b5904d995f050163114d4, type: 3}

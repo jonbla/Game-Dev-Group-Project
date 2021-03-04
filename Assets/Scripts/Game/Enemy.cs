@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
+    /// <summary>
+    /// Name of spawned enemy
+    /// </summary>
     public string enemyName;
 
     [Range(0, 100)]
