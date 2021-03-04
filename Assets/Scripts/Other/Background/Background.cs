@@ -8,6 +8,8 @@ public class Background : MonoBehaviour
 
     public bool reloadedMain = false;
 
+    public int enemyLevel = 0;
+
 
     void Start()
     {
