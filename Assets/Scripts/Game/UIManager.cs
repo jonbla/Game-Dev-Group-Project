@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
+        print("A random spell is: " + SpellHandler.GetRandomSpell());
         FightManager.playerTurn = false;
 
         FightMenu();
