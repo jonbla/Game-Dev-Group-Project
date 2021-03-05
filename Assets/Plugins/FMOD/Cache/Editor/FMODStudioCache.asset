@@ -15,12 +15,38 @@ MonoBehaviour:
   Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< Updated upstream
   lastModified: 637491116995688842
+=======
+  lastModified: 637498464931325593
+>>>>>>> Stashed changes
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 700
   Exists: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &-4116156685296102092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637498464931325593
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+>>>>>>> Stashed changes
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,8 +67,13 @@ MonoBehaviour:
   MasterBanks:
   - {fileID: 5141675913517865930}
   StringsBanks:
+<<<<<<< Updated upstream
   - {fileID: -6904096426751408831}
   stringsBankWriteTime: 637491116995688842
+=======
+  - {fileID: -9052973222405882040}
+  stringsBankWriteTime: 637498464931325593
+>>>>>>> Stashed changes
   cacheVersion: 6
 --- !u!114 &5141675913517865930
 MonoBehaviour:
