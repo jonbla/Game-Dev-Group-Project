@@ -11,6 +11,14 @@ public class Spell
     public int tier;
     public int cost;
 
+    /// <summary>
+    /// Spell Object
+    /// </summary>
+    /// <param name="_name">Name of spell</param>
+    /// <param name="_rolls">How many dice to roll</param>
+    /// <param name="_dieType">How many sides dice has</param>
+    /// <param name="_tier">Spell tier</param>
+    /// <param name="_cost">Mana cost to use spell</param>
     public Spell(string _name, int _rolls, int _dieType, int _tier, int _cost)
     {
         name = _name;
@@ -42,6 +50,14 @@ public static class SpellHandler
         AddSpell("Whistling Strike", 2, 4, 1, 1);
     }
 
+    /// <summary>
+    /// Add Spell to spellbook
+    /// </summary>
+    /// <param name="name">Name of spell</param>
+    /// <param name="rolls">How many dice to roll</param>
+    /// <param name="dieType">How many sides dice has</param>
+    /// <param name="tier">Spell tier</param>
+    /// <param name="cost">Mana cost to use spell</param>
     private static void AddSpell(string name, int rolls, int dieType, int tier, int cost)
     {
         spellNames.Add(name);
