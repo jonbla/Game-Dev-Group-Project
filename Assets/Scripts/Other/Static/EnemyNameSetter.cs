@@ -23,8 +23,6 @@ public static class EnemyNameSetter
         EnemyInfo info = new EnemyInfo();
         if (tier < 4)
         {
-            //NOTE: it says that the upper range is inclusive, 
-            //however, after printing out 200 rounds, I can tell you that is a lie
             info.graphic = (tier*4) + Random.Range(0,4);
         }
         else
