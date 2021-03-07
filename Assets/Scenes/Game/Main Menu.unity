@@ -468,7 +468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOAD
+  m_text: CONTINUE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c99721deae1359f4c8af2474a984a322, type: 2}
   m_sharedMaterial: {fileID: 1456608661773266659, guid: c99721deae1359f4c8af2474a984a322, type: 2}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 1031521053}
   - component: {fileID: 1031521052}
   m_Layer: 5
-  m_Name: Start
+  m_Name: New Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 1128350655}
   - component: {fileID: 1128350654}
   m_Layer: 5
-  m_Name: Load
+  m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: NEW GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c99721deae1359f4c8af2474a984a322, type: 2}
   m_sharedMaterial: {fileID: 1456608661773266659, guid: c99721deae1359f4c8af2474a984a322, type: 2}

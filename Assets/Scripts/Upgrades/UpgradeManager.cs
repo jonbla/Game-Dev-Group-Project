@@ -4,30 +4,18 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnMagic()
     {
-        print("majik");
+        UpgradeLibrary.IncrementMagicLvl();
     }
 
     public void OnSpell()
     {
-        print("Spell");
+        UpgradeLibrary.IncrementSpellLvl();
     }
 
     public void OnHealth()
     {
-        print("Health");
+        UpgradeLibrary.IncrementHealthLvl();
     }
 }

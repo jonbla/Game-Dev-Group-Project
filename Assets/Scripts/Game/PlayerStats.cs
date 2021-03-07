@@ -15,6 +15,10 @@ public class PlayerStats : MonoBehaviour
 
 	void Start()
 	{
+        //Applies upgrade bonuses to HP and MP
+        maxHP += UpgradeLibrary.GetHealthBonus();
+        maxMP += UpgradeLibrary.GetMagicBonus();
+
 		healthBar.SetHealth(currentHP, maxHP);
 		magicBar.SetMagic(currentMP, maxMP);
 	}
