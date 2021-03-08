@@ -22,8 +22,9 @@ public class UIManager : MonoBehaviour
     //Set the default configuration on start
     private void Start()
     {
-        FightMenu();
         fightManager = GameObject.Find("Code").transform.Find("Fight Manager").GetComponent<FightManager>();
+
+        FightMenu();        
     }
 
     public void FightMenu()

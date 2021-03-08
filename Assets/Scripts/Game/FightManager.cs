@@ -20,6 +20,7 @@ public class FightManager : MonoBehaviour
     private GameObject clone;
 
     PlayerStats player;
+    LevelLoader levelLoader;
 
     [Space]
     public enemyGraphic[] enemySprites;
@@ -33,18 +34,22 @@ public class FightManager : MonoBehaviour
 
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
-
+        levelLoader = GameObject.Find("Code").transform.Find("Load Manager").GetComponent<LevelLoader>();
         InitFight();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemy.health <= 0 || player.currentHP <= 0)
+        if(enemy.GetCurrentHP() <= 0f || player.GetCurrentHP() <= 0f)
         {
+            print("Enemy: "+enemy.GetCurrentHP());
+            print("Player: " + player.GetCurrentHP());
+
             isFightActive = false;
-            //TODO change scene to Upgrade Screen
+            levelLoader.BasicLoad();
         }
+
         HandleTurn();
     }
 
@@ -81,7 +86,7 @@ public class FightManager : MonoBehaviour
         if (!playerTurn)
         {
             enemy.DoTurn();
-            playerTurn = true;
+            ToggleTurn();
         }
     }
 

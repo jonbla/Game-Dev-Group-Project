@@ -20,7 +20,8 @@ public class LevelLoader : MonoBehaviour
     {
         LOADING,
         MAIN_MENU,
-        GAME_SCENE
+        GAME_SCENE,
+        UPGRADES
     };
 
     /// <summary>

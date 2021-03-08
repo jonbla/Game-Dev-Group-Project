@@ -990,6 +990,7 @@ Transform:
   - {fileID: 1475157123}
   - {fileID: 314606239}
   - {fileID: 860291137}
+  - {fileID: 1426548221}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2335,7 +2336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542dc9adcd6e3184e82a21bea5d28f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7029826332452243148, guid: a4eb0c7732b5d6048b709fc9c37a3a02, type: 3}
+  enemyPrefab: {fileID: 7029826332452243148, guid: a4eb0c7732b5d6048b709fc9c37a3a02, type: 3}
   enemySprites:
   - image: {fileID: 21300000, guid: 92d139411519b2743b7584590b70b346, type: 3}
     name: Bat
@@ -2704,6 +2705,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159149729}
   m_CullTransparentMesh: 1
+--- !u!1 &1426548220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426548221}
+  - component: {fileID: 1426548222}
+  m_Layer: 0
+  m_Name: Load Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426548221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426548220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 376783639}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426548222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426548220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edce93d89139fe4282bda222d3d5f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelToLoad: 3
+  currentScene: 2
 --- !u!1 &1475157122
 GameObject:
   m_ObjectHideFlags: 0
