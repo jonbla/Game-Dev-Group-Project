@@ -19,11 +19,14 @@ public class Enemy : MonoBehaviour
     public int damage = 5;
 
     TextMeshPro nameText;
+    PlayerStats player;
+
 
     // Start is called before the first frame update
     void Start()
     {
         nameText = GetComponentInChildren<TextMeshPro>();
+        player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
 
         nameText.text = enemyName;
     }
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour
     public void DoTurn()
     {
         print("Enemy turn");
+        player.TakeDamage(10); //placeholder code
         switch (DecideAction()){
             case 0: //just deal damage
                 //TODO: decrease player health by amount (waiting on player stats)
@@ -61,7 +65,7 @@ public class Enemy : MonoBehaviour
                     ;break;
         }
     }
-
+    
     public int DecideAction(){
         // we have some mana, lets see if we can cast a spell
         if (mana > 0){
@@ -87,8 +91,16 @@ public class Enemy : MonoBehaviour
         int totalRolled = 0;
         for (int i = 0; i < numOfDie; i++){
         totalRolled += Random.Range(1, dieSides);
-        }
-
-        return totalRolled;
+		return totalRolled;
     }
+	
+	public void TakeDamage(int val)
+	{
+		health -= val;
+	}
+	
+	public float GetCurrentHP()
+	{
+		return health;
+	}
 }

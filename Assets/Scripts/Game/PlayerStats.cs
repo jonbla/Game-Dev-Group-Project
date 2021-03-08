@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-	public float maxHP;
-	public float currentHP;
+	float maxHP;
+	float currentHP;
 
-	public float maxMP;
-	public float currentMP;
+	float maxMP;
+	float currentMP;
 
 	public StatBars healthBar;
 	public StatBars magicBar;
 
 	void Start()
 	{
+        maxHP = 100f;
+        maxMP = 100f;
+
+        //Applies upgrade bonuses to HP and MP
+        maxHP += UpgradeLibrary.GetHealthBonus();
+        maxMP += UpgradeLibrary.GetMagicBonus();
+
+        currentHP = maxHP;
+        currentMP = maxMP;
+
 		healthBar.SetHealth(currentHP, maxHP);
 		magicBar.SetMagic(currentMP, maxMP);
 	}
@@ -42,7 +52,7 @@ public class PlayerStats : MonoBehaviour
 		}*/
 	}
 
-	void TakeDamage(float dmg)
+	public void TakeDamage(float dmg)
 	{
 		if((0 <= currentHP - dmg) && (maxHP >= currentHP - dmg))
 		{
@@ -59,5 +69,15 @@ public class PlayerStats : MonoBehaviour
 			magicBar.SetMagic(currentMP,maxMP);
 		}
 	}
+
+    public float GetCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public float GetCurrentMP()
+    {
+        return currentMP;
+    }
 
 }
