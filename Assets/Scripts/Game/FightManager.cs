@@ -63,10 +63,6 @@ public class FightManager : MonoBehaviour
         enemy = clone.GetComponent<Enemy>();
 
         //Give enemy an identity
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
         SetEnemyInfo(clone, background.enemyTier);
 
     }

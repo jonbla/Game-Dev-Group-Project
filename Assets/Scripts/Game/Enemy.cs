@@ -31,16 +31,12 @@ public class Enemy : MonoBehaviour
         nameText.text = enemyName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DoTurn()
     {
         print("Enemy turn");
+
         player.TakeDamage(10); //placeholder code
+
         switch (DecideAction()){
             case 0: //just deal damage
                 //TODO: decrease player health by amount (waiting on player stats)
@@ -86,11 +82,15 @@ public class Enemy : MonoBehaviour
          return 0;
     }
 
-    private int RollDice(int numOfDie, int dieSides){
+    private int RollDice(int numOfDie, int dieSides)
+    {
         // ie, RollDice(2,6) would roll two 6 sided dice
         int totalRolled = 0;
-        for (int i = 0; i < numOfDie; i++){
-        totalRolled += Random.Range(1, dieSides);
+        for (int i = 0; i < numOfDie; i++)
+        {
+            totalRolled += Random.Range(1, dieSides);
+        }
+
 		return totalRolled;
     }
 	
