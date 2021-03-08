@@ -17,10 +17,13 @@ public class UIManager : MonoBehaviour
     public GameObject row1;
     public GameObject row2;
 
+    FightManager fightManager;
+
     //Set the default configuration on start
     private void Start()
     {
         FightMenu();
+        fightManager = GameObject.Find("Code").transform.Find("Fight Manager").GetComponent<FightManager>();
     }
 
     public void FightMenu()
@@ -68,9 +71,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnFlee()
     {
-        if (!FightManager.playerTurn)
+        if (!fightManager.getIsPlayerTurn())
             return;
-        FightManager.playerTurn = false;
+        fightManager.ToggleTurn();
         print("AHHHHHHHHHH!");
 
         FightMenu();
@@ -82,7 +85,7 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
-        FightManager.playerTurn = false;
+        fightManager.ToggleTurn();
 
         FightMenu();
     }
@@ -93,7 +96,7 @@ public class UIManager : MonoBehaviour
     public void OnPunch()
     {
         print("Punch!");
-        FightManager.playerTurn = false;
+        fightManager.ToggleTurn();
 
         FightMenu();
     }
@@ -104,8 +107,8 @@ public class UIManager : MonoBehaviour
     public void OnKick()
     {
         print("Kick!");
-        FightManager.playerTurn = false;
-        
+        fightManager.ToggleTurn();
+
         FightMenu();
     }
 }
