@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
 		}
 	}
 
-	void UseMagic(float magic)
+	public void UseMagic(float magic)
 	{
 		if((0 <= currentMP - magic) && (maxMP >= currentMP - magic))
 		{

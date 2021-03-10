@@ -954,10 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560d9cef002cbd94bac192e1b84d0709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100
-  maxMP: 10
-  currentMP: 10
   healthBar: {fileID: 1745145871}
   magicBar: {fileID: 890948488}
 --- !u!1 &376783638
