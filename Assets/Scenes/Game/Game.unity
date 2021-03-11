@@ -954,10 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560d9cef002cbd94bac192e1b84d0709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100
-  maxMP: 10
-  currentMP: 10
   healthBar: {fileID: 1745145871}
   magicBar: {fileID: 890948488}
 --- !u!1 &376783638
@@ -1501,10 +1497,10 @@ RectTransform:
   m_Father: {fileID: 459158619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03, y: 0}
-  m_AnchorMax: {x: 0.96900004, y: 0.19959265}
-  m_AnchoredPosition: {x: 0.9000244, y: 6.8895264}
-  m_SizeDelta: {x: -1.8, y: -13.779}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.19959265}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.000091553}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554157055
 MonoBehaviour:
