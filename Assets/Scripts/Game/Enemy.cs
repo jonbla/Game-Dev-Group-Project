@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -6,15 +8,41 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
+
+    public class ReadOnlyAttribute : PropertyAttribute
+    {
+
+    }
+
+    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+    public class ReadOnlyDrawer : PropertyDrawer
+    {
+        public override float GetPropertyHeight(SerializedProperty property,
+                                                GUIContent label)
+        {
+            return EditorGUI.GetPropertyHeight(property, label, true);
+        }
+
+        public override void OnGUI(Rect position,
+                                   SerializedProperty property,
+                                   GUIContent label)
+        {
+            GUI.enabled = false;
+            EditorGUI.PropertyField(position, property, label, true);
+            GUI.enabled = true;
+        }
+    }
+
     /// <summary>
     /// Name of spawned enemy
     /// </summary>
     public string enemyName;
 
     [Range(0, 100)]
-    public int health;
+    [ReadOnly]
+    public int health = 100;
     [Range(0, 10)]
-    public int mana;
+    public int mana = 10;
 
     public int damage = 5;
 

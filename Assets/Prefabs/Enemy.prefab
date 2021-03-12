@@ -361,3 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: "Missing \u2116"
+  health: 100
+  mana: 10
+  damage: 5

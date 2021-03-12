@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
---- !u!114 &-4902585626937783913
-=======
---- !u!114 &-6324932103082547607
->>>>>>> UpgradeScreen
+--- !u!114 &-852820097828640120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13,82 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637492480137139818
-=======
-  Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637491116995718811
->>>>>>> UpgradeScreen
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-3619349804836185356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637492480137139818
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &11400000
-=======
-  EditorBanks:
-  - {fileID: 4580260522438722732}
-  - {fileID: -6324932103082547607}
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -6324932103082547607}
-  StringsBanks:
-  - {fileID: 4580260522438722732}
-  stringsBankWriteTime: 637491116995688842
-  cacheVersion: 6
---- !u!114 &4580260522438722732
->>>>>>> UpgradeScreen
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -4902585626937783913}
-  - {fileID: -3619349804836185356}
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -3619349804836185356}
-  StringsBanks:
-  - {fileID: -4902585626937783913}
-  stringsBankWriteTime: 637492480137139818
-  cacheVersion: 6
-=======
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
@@ -101,4 +21,45 @@ MonoBehaviour:
   - Name: Desktop
     Value: 700
   Exists: 1
->>>>>>> UpgradeScreen
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -852820097828640120}
+  - {fileID: 115383921807025897}
+  EditorEvents: []
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 115383921807025897}
+  StringsBanks:
+  - {fileID: -852820097828640120}
+  stringsBankWriteTime: 637491116995688842
+  cacheVersion: 6
+--- !u!114 &115383921807025897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMODCrap/FModProject/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637491116995718811
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
