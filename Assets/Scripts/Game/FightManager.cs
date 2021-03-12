@@ -95,6 +95,6 @@ public class FightManager : MonoBehaviour
         enemyTemp.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
 
         //Set image
-        enemyTemp.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+        enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
     }
 }
