@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ToolTipManager : MonoBehaviour
 {
+
+    GameObject toolTip;
     // Start is called before the first frame update
     void Start()
     {
-        
+        toolTip = transform.Find("ToolTip").gameObject;
     }
 
     // Update is called once per frame
@@ -18,11 +20,11 @@ public class ToolTipManager : MonoBehaviour
 
     public void OnEnterHover()
     {
-        print("Make Tooltip");
+        toolTip.SetActive(true);
     }
 
     public void OnExitHover()
     {
-        print("Remove Tooltip");
+        toolTip.SetActive(false);
     }
 }
