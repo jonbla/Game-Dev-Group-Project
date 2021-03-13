@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ToolTipManager : MonoBehaviour
@@ -7,6 +9,7 @@ public class ToolTipManager : MonoBehaviour
 
     float startTime;
     bool isHovering;
+    bool isTweening;
 
     float toolTipDelay = 1f;
 
@@ -15,7 +18,6 @@ public class ToolTipManager : MonoBehaviour
     void Start()
     {
         toolTip = transform.Find("ToolTip").gameObject;
-        isHovering = false;
     }
 
     // Update is called once per frame
@@ -26,6 +28,13 @@ public class ToolTipManager : MonoBehaviour
             if(Time.time - startTime >= toolTipDelay)
             {
                 toolTip.SetActive(true);
+
+                if (!isTweening)
+                {
+                    toolTip.transform.Find("Panel").GetComponent<Image>().DOColor(new Color(1,1,1,0), .5f).From().SetAutoKill(false);
+                    toolTip.transform.Find("Arrow").Find("Arrow (1)").GetComponent<Image>().DOColor(new Color(1, 1, 1, 0), .5f).From().SetAutoKill(false);
+                    isTweening = true;
+                }
             }
         }
     }
@@ -33,13 +42,13 @@ public class ToolTipManager : MonoBehaviour
     public void OnEnterHover()
     {
         startTime = Time.time;
-        isHovering = true;
-        
+        isHovering = true;        
     }
 
     public void OnExitHover()
     {
         isHovering = false;
+        isTweening = false;
         toolTip.SetActive(false);
     }
 }
