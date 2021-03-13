@@ -944,6 +944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollbarVertical_5
       objectReference: {fileID: 0}
+    - target: {fileID: 129458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11429458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_Size
       value: 0
@@ -966,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1818,6 +1822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollbarVertical_5 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 129458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_Color.b
       value: 0.99215686
@@ -1848,15 +1856,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.42299998
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 22429458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_Pivot.x
@@ -2038,6 +2046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrollbarVertical_5 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 129458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_Color.b
       value: 0.44587645
@@ -2068,15 +2080,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.42299998
       objectReference: {fileID: 0}
     - target: {fileID: 22429456, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 22429458, guid: a12ce78bf2314cd4b8a868d214e463b0, type: 3}
       propertyPath: m_Pivot.x
