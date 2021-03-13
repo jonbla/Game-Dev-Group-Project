@@ -12,73 +12,89 @@ public class FightManager : MonoBehaviour
         public string name;
     }
 
-    public static bool playerTurn;
-    public static bool newFight;
+    bool playerTurn;
+    bool isFightActive;
     
-    public GameObject enemy;
-    private GameObject clone;    
+    public GameObject enemyPrefab;
+    private Enemy enemy;
+    private GameObject clone;
+
+    PlayerStats player;
+    LevelLoader levelLoader;
 
     [Space]
     public enemyGraphic[] enemySprites;
 
     Background background;
 
-    private static bool lockTurn;
     void Start()
     {
         playerTurn = true;
-        newFight = true;
-        lockTurn = false;
+        isFightActive = true;
 
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
+        player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
+        levelLoader = GameObject.Find("Code").transform.Find("Load Manager").GetComponent<LevelLoader>();
+        InitFight();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (newFight)
-            InitFight();
-        if (!lockTurn)
-            HandleTurn();
+        if(enemy.GetCurrentHP() <= 0f || player.GetCurrentHP() <= 0f)
+        {
+            print("Enemy: "+enemy.GetCurrentHP());
+            print("Player: " + player.GetCurrentHP());
+
+            isFightActive = false;
+            levelLoader.BasicLoad();
+        }
+
+        HandleTurn();
     }
 
     void InitFight()
     {
-        newFight = false;
         print("I made an enemy!");
 
         //Instantiate enemy and keep reference to it 
-        clone = Instantiate(enemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+        clone = Instantiate(enemyPrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+        enemy = clone.GetComponent<Enemy>();
 
         //Give enemy an identity
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
-        //background.EnemyLevelUp();
         SetEnemyInfo(clone, background.enemyTier);
 
     }
 
-    void HandleTurn()
+    public void ToggleTurn()
     {
-        lockTurn = true;
-        if (!playerTurn)
-        {
-            clone.GetComponent<Enemy>().DoTurn();
-            playerTurn = true;
-        }
-        lockTurn = false;
+        playerTurn = !playerTurn;
     }
 
-    void SetEnemyInfo(GameObject enemy, int tier)
+    public bool getIsPlayerTurn()
+    {
+        return playerTurn;
+    }
+
+    void HandleTurn()
+    {
+        if (!playerTurn)
+        {
+            enemy.DoTurn();
+            ToggleTurn();
+        }
+    }
+
+    void SetEnemyInfo(GameObject enemyTemp, int tier)
     {
         //Get info about spawned enemy based on tier
         EnemyInfo info = EnemyNameSetter.GetEnemyInfo(tier);
 
         //Set name
-        enemy.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
+        enemyTemp.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
 
         //Set image
-        enemy.transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+        enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
     }
 }

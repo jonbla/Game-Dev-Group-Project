@@ -17,10 +17,23 @@ public class UIManager : MonoBehaviour
     public GameObject row1;
     public GameObject row2;
 
+    FightManager fightManager;
+    Spell spellOne;
+    PlayerStats player;
+    Enemy enemy;
+
+    private int dmg;
+
     //Set the default configuration on start
     private void Start()
     {
-        FightMenu();
+        fightManager = GameObject.Find("Code").transform.Find("Fight Manager").GetComponent<FightManager>();
+
+        //These two pieces of code allow us to edit player and enemy stats inside this script
+        player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
+        enemy = GameObject.Find("Enemy(Clone)").GetComponent<Enemy>();
+
+        FightMenu();        
     }
 
     public void FightMenu()
@@ -68,9 +81,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnFlee()
     {
-        if (!FightManager.playerTurn)
+        if (!fightManager.getIsPlayerTurn())
             return;
-        FightManager.playerTurn = false;
+        fightManager.ToggleTurn();
         print("AHHHHHHHHHH!");
 
         FightMenu();
@@ -82,7 +95,13 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
-        FightManager.playerTurn = false;
+        spellOne = SpellHandler.GetRandomSpell();
+        print("A random spell is: " + spellOne);
+        dmg = RollDice(spellOne.rolls, spellOne.dieType);
+        enemy.TakeDamage(dmg);
+        player.UseMagic(spellOne.cost);
+        print("Spell damage: " + dmg);
+        fightManager.ToggleTurn();
 
         FightMenu();
     }
@@ -93,7 +112,9 @@ public class UIManager : MonoBehaviour
     public void OnPunch()
     {
         print("Punch!");
-        FightManager.playerTurn = false;
+        enemy.TakeDamage(5);
+        print("Punch damage: 5");
+        fightManager.ToggleTurn();
 
         FightMenu();
     }
@@ -104,8 +125,25 @@ public class UIManager : MonoBehaviour
     public void OnKick()
     {
         print("Kick!");
-        FightManager.playerTurn = false;
-        
+        enemy.TakeDamage(5);
+        print("Kick damage: 5");
+        fightManager.ToggleTurn();
+
         FightMenu();
+    }
+
+    /// <summary>
+    /// Calculates damage for spells
+    /// </summary>
+    private int RollDice(int numOfDie, int dieSides)
+    {
+        // ie, RollDice(2,6) would roll two 6 sided dice
+        int totalRolled = 0;
+        for (int i = 0; i < numOfDie; i++)
+        {
+            totalRolled += Random.Range(1, dieSides);
+        }
+
+        return totalRolled;
     }
 }
