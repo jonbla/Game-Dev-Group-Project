@@ -31,44 +31,25 @@ public class PlayerStats : MonoBehaviour
 
 	void Update()
 	{
-		/*if(Input.GetKeyDown(KeyCode.UpArrow))
-		{
-			TakeDamage(-5);
-		}
-
-		if(Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			TakeDamage(5);
-		}
-
-		if(Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			UseMagic(1);
-		}
-
-		if(Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			UseMagic(-1);
-		}*/
+		/*OnDebugging();*/
 	}
 
 	public void TakeDamage(float dmg)
 	{
-		if((0 <= currentHP - dmg) && (maxHP >= currentHP - dmg))
-		{
-			currentHP -= dmg;
-			healthBar.SetHealth(currentHP,maxHP);
-		}
+		currentHP -= dmg;
+		healthBar.SetHealth(currentHP, maxHP);
 	}
 
 	public void UseMagic(float magic)
 	{
-		if((0 <= currentMP - magic) && (maxMP >= currentMP - magic))
+		if((currentMP - magic) <= 0)
 		{
-			currentMP -= magic;
-			magicBar.SetMagic(currentMP,maxMP);
+            currentMP = 0;
 		}
-	}
+
+        currentMP -= magic;
+        magicBar.SetMagic(currentMP, maxMP);
+    }
 
     public float GetCurrentHP()
     {
@@ -78,6 +59,29 @@ public class PlayerStats : MonoBehaviour
     public float GetCurrentMP()
     {
         return currentMP;
+    }
+
+    void OnDebugging()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            TakeDamage(-5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            TakeDamage(5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            UseMagic(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            UseMagic(-1);
+        }
     }
 
 }
