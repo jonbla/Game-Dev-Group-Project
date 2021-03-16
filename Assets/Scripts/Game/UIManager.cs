@@ -83,10 +83,7 @@ public class UIManager : MonoBehaviour
     {
         if (!fightManager.getIsPlayerTurn())
             return;
-        fightManager.ToggleTurn();
-        print("AHHHHHHHHHH!");
-
-        FightMenu();
+        fightManager.Flee();
     }
 
     /// <summary>

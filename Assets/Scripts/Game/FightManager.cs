@@ -20,7 +20,8 @@ public class FightManager : MonoBehaviour
     private GameObject clone;
 
     PlayerStats player;
-    LevelLoader levelLoader;
+    LevelLoader levelLoader_Upgrade;
+    LevelLoader levelLoader_EndScreen;
 
     [Space]
     public enemyGraphic[] enemySprites;
@@ -34,20 +35,31 @@ public class FightManager : MonoBehaviour
 
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
-        levelLoader = GameObject.Find("Code").transform.Find("Load Manager").GetComponent<LevelLoader>();
+        levelLoader_Upgrade = GameObject.Find("Code").transform.Find("Upgrade Load Manager").GetComponent<LevelLoader>();
+        levelLoader_EndScreen = GameObject.Find("Code").transform.Find("Enter Screen Load Manager").GetComponent<LevelLoader>();
         InitFight();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemy.GetCurrentHP() <= 0f || player.GetCurrentHP() <= 0f)
+        if(enemy.GetCurrentHP() <= 0f)
         {
             print("Enemy: "+enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
-            levelLoader.BasicLoad();
+            levelLoader_Upgrade.BasicLoad();
+        }
+
+        if(player.GetCurrentHP() <= 0f)
+        {
+            print("Enemy: " + enemy.GetCurrentHP());
+            print("Player: " + player.GetCurrentHP());
+
+            isFightActive = false;
+            background.playerLost = true;
+            levelLoader_EndScreen.BasicLoad();
         }
 
         HandleTurn();
@@ -96,5 +108,12 @@ public class FightManager : MonoBehaviour
 
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+    }
+
+    public void Flee()
+    {
+        isFightActive = false;
+        background.playerLost = true;
+        levelLoader_EndScreen.BasicLoad();
     }
 }

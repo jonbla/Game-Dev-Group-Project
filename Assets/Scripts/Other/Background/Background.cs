@@ -12,6 +12,7 @@ public class Background : MonoBehaviour
     /// Current Enemy Tier
     /// </summary>
     public int enemyTier = 0;
+    public bool playerLost;
 
 
     void Start()
