@@ -109,4 +109,11 @@ public class FightManager : MonoBehaviour
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
     }
+
+    public void Flee()
+    {
+        isFightActive = false;
+        background.playerLost = true;
+        levelLoader_EndScreen.BasicLoad();
+    }
 }
