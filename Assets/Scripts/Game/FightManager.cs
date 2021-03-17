@@ -50,8 +50,14 @@ public class FightManager : MonoBehaviour
 
             isFightActive = false;
 
-            //if(enemy.tier)
-            levelLoader_Upgrade.BasicLoad();
+            if(enemy.tier >= 4)
+            {
+                levelLoader_EndScreen.BasicLoad();
+            }
+            else
+            {
+                levelLoader_Upgrade.BasicLoad();
+            }            
         }
 
         if(player.GetCurrentHP() <= 0f)
