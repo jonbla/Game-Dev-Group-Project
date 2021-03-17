@@ -92,11 +92,19 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
-        spellOne = SpellHandler.GetRandomSpell();
+        spellOne = Background.spellOne;
         print("A random spell is: " + spellOne);
         dmg = RollDice(spellOne.rolls, spellOne.dieType);
         enemy.TakeDamage(dmg);
         player.UseMagic(spellOne.cost);
+        if ((enemy.mana + spellOne.cost) > enemy.maxMana)
+        {
+            enemy.mana = enemy.maxMana;
+        }
+        else
+        {
+            enemy.mana += spellOne.cost;
+        }
         print("Spell damage: " + dmg);
         fightManager.ToggleTurn();
 

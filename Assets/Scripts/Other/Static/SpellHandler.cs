@@ -48,21 +48,21 @@ public static class SpellHandler
         //Parameters: name, rolls, dieType, tier, cost
 
         //Tier 1 spells
-        AddSpell("Fire Bolt", 3, 6, 1, 2);
-        AddSpell("Whistling Strike", 2, 4, 1, 1);
+        AddSpell("Fire Bolt", 3, 6, 1, 20);
+        AddSpell("Whistling Strike", 3, 4, 1, 10);
         //AddSpell("Minor Heal",2,-12,1,4);
         //Tier 2 spells
-        AddSpell("Lightning Bolt",3,10,2,5);
-        AddSpell("Dark Daggers",3,8,2,3);
+        AddSpell("Lightning Bolt",3,10,2,50);
+        AddSpell("Dark Daggers",3,8,2,30);
         //AddSpell("Rejuvenating Heal",3,-12,2,5);
         //AddSpell("Minor Mana Drain",3,10,2,0); //Not sure if this spell would work with this system, so I'm leaving it out for now (No way to affect MP)
         //Tier 3 spells
-        AddSpell("Fireball",5,8,3,6);
+        AddSpell("Fireball",5,8,3,60);
         //AddSpell("Lifedrain",2,8,3,4); //No way to deal damage and heal at same time
         //AddSpell("Major Heal",4,-12,3,6);
         //Tier 4 spells
-        AddSpell("Fireblast",5,12,4,8);
-        AddSpell("Aggressive Charge",6,8,4,6); //Won't deal damage to caster as it stands
+        AddSpell("Fireblast",5,12,4,80);
+        AddSpell("Aggressive Charge",6,8,4,60); //Won't deal damage to caster as it stands
         //AddSpell("Superb Heal",5,10,4,8);
         //AddSpell("Lightning Bolt",3,10,4,5); //Not sure if this spell would work with this system, so I'm leaving it out for now (No way to affect MP)
     }
