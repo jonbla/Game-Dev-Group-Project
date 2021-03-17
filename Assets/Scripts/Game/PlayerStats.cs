@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
         maxMP += UpgradeLibrary.GetMagicBonus();
 
         currentHP = maxHP;
-        currentMP = maxMP;
+        currentMP = maxMP/2;
 
 		healthBar.SetHealth(currentHP, maxHP);
 		magicBar.SetMagic(currentMP, maxMP);

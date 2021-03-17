@@ -58,6 +58,8 @@ public class Enemy : MonoBehaviour
     public StatBars healthBar;
     public StatBars magicBar;
 
+    public AudioSource T1Music, T2Music, T3Music, T4Music;
+
 
     // Start is called before the first frame update
     void Start()
@@ -79,8 +81,7 @@ public class Enemy : MonoBehaviour
         print("Enemy turn");
 
         switch (DecideAction()){
-            case 0: //just deal damage
-                //TODO: decrease player health by amount (waiting on player stats)
+            case 0: //just deal damage normally
                 //player.health -= damage;
                         playerStats.TakeDamage(damage);
                     ;break;

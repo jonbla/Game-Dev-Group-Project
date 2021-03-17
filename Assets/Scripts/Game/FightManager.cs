@@ -18,11 +18,13 @@ public class FightManager : MonoBehaviour
     public GameObject enemyPrefab;
     private Enemy enemy;
     private GameObject clone;
+    private GameObject playerButtons;
 
     PlayerStats player;
     LevelLoader levelLoader_Upgrade;
     LevelLoader levelLoader_EndScreen;
 
+    bool alreadyOn = false;
     [Space]
     public enemyGraphic[] enemySprites;
 
@@ -35,6 +37,7 @@ public class FightManager : MonoBehaviour
 
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
+        playerButtons = GameObject.FindGameObjectWithTag("PLAYER BUTTONS");
         levelLoader_Upgrade = GameObject.Find("Code").transform.Find("Upgrade Load Manager").GetComponent<LevelLoader>();
         levelLoader_EndScreen = GameObject.Find("Code").transform.Find("Enter Screen Load Manager").GetComponent<LevelLoader>();
         InitFight();
@@ -89,12 +92,24 @@ public class FightManager : MonoBehaviour
         return playerTurn;
     }
 
+       IEnumerator turnWaiter(){
+        if (!alreadyOn){
+            alreadyOn = true;
+            playerButtons.SetActive(false);
+            yield return new WaitForSeconds(2);
+            enemy.DoTurn();
+            yield return new WaitForSeconds(1);
+            ToggleTurn();
+            alreadyOn = false;
+            playerButtons.SetActive(true);
+        }
+
+    }
     void HandleTurn()
     {
         if (!playerTurn)
         {
-            enemy.DoTurn();
-            ToggleTurn();
+            StartCoroutine("turnWaiter");
         }
     }
 
@@ -105,31 +120,43 @@ public class FightManager : MonoBehaviour
 
         //Set name
         enemyTemp.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
-
+        enemy.tier = tier;
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
-        
+        print("I AM THIS TIER: " +enemy.tier);
         switch (enemy.tier)
         {
+            case 0: 
+                enemy.maxHealth = RollDice(4, 10) + 10;
+                enemy.T1Music.enabled = true;
+                break;
             case 1: 
                 enemy.maxHealth = RollDice(4, 10) + 10;
+                enemy.T1Music.enabled = true;
                 break;
             case 2:
                 enemy.maxHealth = RollDice(6, 10) + 20;
+                enemy.T2Music.enabled = true;
                 break;
             case 3:
                 enemy.maxHealth = RollDice(8, 10) + 25;
+                enemy.T3Music.enabled = true;
                 break;
             case 4:
                 enemy.maxHealth = RollDice(10, 10) + 30;
+                enemy.T4Music.enabled = true;
+                break;
+            case 5:
+                enemy.maxHealth = 150;
+                enemy.T4Music.enabled = true;
                 break;
             default:
                 enemy.maxHealth = 150;
                 break;
         }
-        enemy.maxMana = 20; //Dont know what to set it to.
+        enemy.maxMana = 100; //Dont know what to set it to.
         enemy.health = enemy.maxHealth;
-        enemy.mana = enemy.maxMana;
+        enemy.mana = enemy.maxMana /2 ;
     }
 
     public void Flee()

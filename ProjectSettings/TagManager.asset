@@ -8,6 +8,7 @@ TagManager:
   - Background
   - EnemyHealth
   - EnemyMana
+  - PLAYER BUTTONS
   layers:
   - Default
   - TransparentFX
