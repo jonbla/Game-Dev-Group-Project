@@ -45,6 +45,8 @@ public class PlayerStats : MonoBehaviour
 		if((currentMP - magic) <= 0)
 		{
             currentMP = 0;
+            print("no mana, no spell, no damage. Sorry");
+            return;
 		}
 
         currentMP -= magic;

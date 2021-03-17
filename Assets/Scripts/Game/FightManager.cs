@@ -108,6 +108,13 @@ public class FightManager : MonoBehaviour
 
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
+        
+        //THESE VALUES NEED ALTERING, THEY ARE NOT BALANCED, THEY ARE JUST NUMBERS
+        enemy.maxHealth = 120;
+        enemy.maxMana = 11;
+        enemy.health = enemy.maxHealth;
+        enemy.mana = enemy.maxMana;
+        //THE ABOVE VALUES NEED ALTERING, READ ABOVE COMMENT.
     }
 
     public void Flee()
