@@ -23,6 +23,7 @@ public class UpgradeManager : MonoBehaviour
     public void OnSpell()
     {
         UpgradeLibrary.IncrementSpellLvl();
+        Background.spellOne = SpellHandler.GetRandomSpellUnderTier(UpgradeLibrary.GetSpellLvl());
         background.EnemyLevelUp();
         levelLoader.BasicLoad();
     }
