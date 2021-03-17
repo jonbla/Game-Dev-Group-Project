@@ -109,12 +109,27 @@ public class FightManager : MonoBehaviour
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
         
-        //THESE VALUES NEED ALTERING, THEY ARE NOT BALANCED, THEY ARE JUST NUMBERS
-        enemy.maxHealth = 120;
-        enemy.maxMana = 11;
+        switch (enemy.tier)
+        {
+            case 1: 
+                enemy.maxHealth = RollDice(4, 10) + 10;
+                break;
+            case 2:
+                enemy.maxHealth = RollDice(6, 10) + 20;
+                break;
+            case 3:
+                enemy.maxHealth = RollDice(8, 10) + 25;
+                break;
+            case 4:
+                enemy.maxHealth = RollDice(10, 10) + 30;
+                break;
+            default:
+                enemy.maxHealth = 150;
+                break;
+        }
+        enemy.maxMana = 20; //Dont know what to set it to.
         enemy.health = enemy.maxHealth;
         enemy.mana = enemy.maxMana;
-        //THE ABOVE VALUES NEED ALTERING, READ ABOVE COMMENT.
     }
 
     public void Flee()
@@ -122,5 +137,16 @@ public class FightManager : MonoBehaviour
         isFightActive = false;
         background.playerLost = true;
         levelLoader_EndScreen.BasicLoad();
+    }
+    private int RollDice(int numOfDie, int dieSides)
+    {
+        // ie, RollDice(2,6) would roll two 6 sided dice
+        int totalRolled = 0;
+        for (int i = 0; i < numOfDie; i++)
+        {
+            totalRolled += UnityEngine.Random.Range(1, dieSides + 1);
+        }
+
+        return totalRolled;
     }
 }
