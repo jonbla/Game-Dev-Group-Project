@@ -49,7 +49,15 @@ public class FightManager : MonoBehaviour
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
-            levelLoader_Upgrade.BasicLoad();
+
+            if(enemy.tier >= 4)
+            {
+                levelLoader_EndScreen.BasicLoad();
+            }
+            else
+            {
+                levelLoader_Upgrade.BasicLoad();
+            }            
         }
 
         if(player.GetCurrentHP() <= 0f)
@@ -105,6 +113,9 @@ public class FightManager : MonoBehaviour
 
         //Set name
         enemyTemp.GetComponent<Enemy>().enemyName = enemySprites[info.graphic].name;
+
+        //Set tier
+        enemyTemp.GetComponent<Enemy>().tier = tier;
 
         //Set image
         enemyTemp.transform.Find("Vertical Container").transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = enemySprites[info.graphic].image;
