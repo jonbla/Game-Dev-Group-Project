@@ -98,6 +98,12 @@ public class UIManager : MonoBehaviour
         print("AbraKadabra");
         spellOne = Background.spellOne;
         print("A random spell is: " + spellOne);
+        if (player.GetCurrentMP() < spellOne.cost)
+        {
+            print("no mana, no spell, no damage. Sorry");
+            FightMenu();
+            return;
+        }
         dmg = RollDice(spellOne.rolls, spellOne.dieType);
         enemy.TakeDamage(dmg);
         player.UseMagic(spellOne.cost);
