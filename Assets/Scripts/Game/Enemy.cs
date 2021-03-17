@@ -55,6 +55,8 @@ public class Enemy : MonoBehaviour
 
     TextMeshPro nameText;
     PlayerStats player;
+    public StatBars healthBar;
+    public StatBars magicBar;
 
 
     // Start is called before the first frame update
@@ -67,6 +69,8 @@ public class Enemy : MonoBehaviour
         GameObject tempPlayer;
         tempPlayer = GameObject.Find("Player Stats");
         playerStats = tempPlayer.GetComponent<PlayerStats>();
+        healthBar = GameObject.FindGameObjectWithTag("EnemyHealth").GetComponent<StatBars>();
+        magicBar = GameObject.FindGameObjectWithTag("EnemyMana").GetComponent<StatBars>();
     }
 
     public void DoTurn()
@@ -225,13 +229,38 @@ public class Enemy : MonoBehaviour
 		return totalRolled;
     }
 	
+    /*
 	public void TakeDamage(int val)
 	{
 		health -= val;
-	}
+	} */
 	
 	public float GetCurrentHP()
 	{
 		return health;
 	}
+
+    public void TakeDamage(float dmg)
+	{
+		health -= (int) dmg;
+		healthBar.SetHealth(health, maxHealth);
+        print("Health: " + health + " MaxHealth: " + maxHealth);
+	}
+
+	public void UseMagic(float magic)
+	{
+		if((mana - magic) <= 0)
+		{
+            mana = 0;
+		}
+
+        mana -= (int)magic;
+        magicBar.SetMagic(mana, maxMana);
+    }
+
+    public void CreateStatBars()
+    {
+        healthBar.SetHealth(health, maxHealth);
+		magicBar.SetMagic(mana, maxMana);
+    }
 }

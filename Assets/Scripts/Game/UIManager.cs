@@ -68,6 +68,10 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnMagic()
     {
+        if (this.spellOne != null)
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = spellOne.name;
+        else
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = Background.spellOne.name;
         CastSpell.SetActive(true);
 
         Magic.SetActive(false);
