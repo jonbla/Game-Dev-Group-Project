@@ -29,6 +29,7 @@ public class FightManager : MonoBehaviour
     public enemyGraphic[] enemySprites;
 
     Background background;
+    MusicController musicController;
 
     void Start()
     {
@@ -36,10 +37,11 @@ public class FightManager : MonoBehaviour
         isFightActive = true;
 
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
+        musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
         playerButtons = GameObject.FindGameObjectWithTag("PLAYER BUTTONS");
         levelLoader_Upgrade = GameObject.Find("Code").transform.Find("Upgrade Load Manager").GetComponent<LevelLoader>();
-        levelLoader_EndScreen = GameObject.Find("Code").transform.Find("Enter Screen Load Manager").GetComponent<LevelLoader>();
+        levelLoader_EndScreen = GameObject.Find("Code").transform.Find("End Screen Load Manager").GetComponent<LevelLoader>();
         InitFight();
     }
 
@@ -100,7 +102,8 @@ public class FightManager : MonoBehaviour
         return playerTurn;
     }
 
-       IEnumerator turnWaiter(){
+    IEnumerator turnWaiter()
+    {
         if (!alreadyOn){
             alreadyOn = true;
             playerButtons.SetActive(false);
@@ -136,27 +139,33 @@ public class FightManager : MonoBehaviour
         {
             case 0: 
                 enemy.maxHealth = RollDice(4, 10) + 10;
-                enemy.T1Music.enabled = true;
+                musicController.StopAll();
+                musicController.T1Music.Play();
                 break;
             case 1: 
                 enemy.maxHealth = RollDice(4, 10) + 10;
-                enemy.T1Music.enabled = true;
+                musicController.StopAll();
+                musicController.T1Music.Play();
                 break;
             case 2:
                 enemy.maxHealth = RollDice(6, 10) + 20;
-                enemy.T2Music.enabled = true;
+                musicController.StopAll();
+                musicController.T2Music.Play();
                 break;
             case 3:
                 enemy.maxHealth = RollDice(8, 10) + 25;
-                enemy.T3Music.enabled = true;
+                musicController.StopAll();
+                musicController.T3Music.Play();
                 break;
             case 4:
                 enemy.maxHealth = RollDice(10, 10) + 30;
-                enemy.T4Music.enabled = true;
+                musicController.StopAll();
+                musicController.T4Music.Play();
                 break;
             case 5:
                 enemy.maxHealth = 150;
-                enemy.T4Music.enabled = true;
+                musicController.StopAll();
+                musicController.T4Music.Play();
                 break;
             default:
                 enemy.maxHealth = 150;

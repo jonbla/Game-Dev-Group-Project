@@ -2641,7 +2641,7 @@ GameObject:
   - component: {fileID: 657146006}
   - component: {fileID: 657146007}
   m_Layer: 0
-  m_Name: Enter Screen Load Manager
+  m_Name: End Screen Load Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,7 @@ TagManager:
   - EnemyHealth
   - EnemyMana
   - PLAYER BUTTONS
+  - Music
   layers:
   - Default
   - TransparentFX
