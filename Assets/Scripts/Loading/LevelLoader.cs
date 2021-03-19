@@ -22,7 +22,8 @@ public class LevelLoader : MonoBehaviour
         MAIN_MENU,
         GAME_SCENE,
         UPGRADES,
-        END_SCREEN
+        END_SCREEN,
+        INFO
     };
 
     /// <summary>
