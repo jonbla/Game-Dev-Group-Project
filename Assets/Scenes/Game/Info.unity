@@ -506,14 +506,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You are fighting your way to Hawaii through hordes of enemies to \ndefeat
-    the big bad: The Dark Lord.\nThis will not a be a hula, in fact, This Ain't No
-    Hula!\n\nControls:\nEvery fight you have the option of punch, kick, casting a
-    spell, \nand flee. \nPunch - Does 5 damage to the enemy\nKick - 50/50 does 10
-    damage or does 0 damage\nSpell - Does damage and costs mana, both scale based
-    on spell\n           damage and which spell you have unlocked.\nMana: Mana is
-    transferred from the use of spells. For example,\nif you have 0 mana, the enemy
-    casts a 10 mana spell, you take \nthe damage, but then have 10 mana.\n"
+  m_text: "You are Andy Sidaris, in order to earn enough money to pay for a plane
+    ticket to hawaii, you must \nfight through a series of monsters, using a mixture
+    of martial arts and arcane spells.\nUpon arriving in hawaii, you must fight the
+    dark lord to save the world from a fate most foul.\n\nControls:\nClick on the
+    buttons corresponding with the desired action\n\nPunch - Does 5 damage \nKick
+    - Does 10 damage, but there's a chance you miss\nSpell - Does damage and costs
+    mana\n\tSpell damage and mana cost scale with new spells learned \n\n\n\nPro
+    Tip: the mana spent on a spell is given to the target of the spell. Strategically
+    plan how much \nmana you give your opponent to limit their healing and avoid
+    massive damage bursts."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

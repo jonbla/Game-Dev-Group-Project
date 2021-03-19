@@ -6,11 +6,14 @@ public class UpgradeManager : MonoBehaviour
 {
     Background background;
     LevelLoader levelLoader;
-
+    MusicController soundmanager;
     public void Start()
     {
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         levelLoader = GameObject.Find("Code").transform.Find("Load Manager").GetComponent<LevelLoader>();
+        soundmanager = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+        soundmanager.StopAll();
+        soundmanager.UpgradeMusic.Play();
     }
 
     public void OnMagic()

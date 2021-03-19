@@ -63,18 +63,22 @@ public class Enemy : MonoBehaviour
             case 1: //we are going to heal t1
                 mana -= 40;
                 health += RollDice(2,12);
+                playerStats.UseMagic(-40);
                     ;break;
             case 4: //we are going to heal t2
                 mana -= 50;
                 health += RollDice(3,12);
+                playerStats.UseMagic(-50);
                     ;break;
             case 5: //we are going to heal t3
                 mana -= 60;
                 health += RollDice(4,12);
+                playerStats.UseMagic(-60);
                     ;break;
             case 6: //we are going to heal t4
-                mana -= 40;
+                mana -= 70;
                 health += RollDice(5,12) + 15;
+                playerStats.UseMagic(-70);
                     ;break;
     // OFFENSIVE SPELLS #######################################################
             case 2: // WhistleStrike
