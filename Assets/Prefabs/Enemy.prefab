@@ -362,5 +362,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: "Missing \u2116"
   health: 100
+  maxHealth: 100
+  maxMana: 10
   mana: 10
+  tier: 0
   damage: 5
+  playerStats: {fileID: 0}
+  healthBar: {fileID: 0}
+  magicBar: {fileID: 0}
+  T1Music: {fileID: 0}
+  T2Music: {fileID: 0}
+  T3Music: {fileID: 0}
+  T4Music: {fileID: 0}

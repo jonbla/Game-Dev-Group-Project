@@ -12,6 +12,8 @@ public class Background : MonoBehaviour
     /// Current Enemy Tier
     /// </summary>
     public int enemyTier = 0;
+    public bool playerLost;
+    public static Spell spellOne = SpellHandler.spells["Fire Bolt"];
 
 
     void Start()

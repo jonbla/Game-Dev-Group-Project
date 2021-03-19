@@ -8,43 +8,19 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
-
-    public class ReadOnlyAttribute : PropertyAttribute
-    {
-
-    }
-
-    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-    public class ReadOnlyDrawer : PropertyDrawer
-    {
-        public override float GetPropertyHeight(SerializedProperty property,
-                                                GUIContent label)
-        {
-            return EditorGUI.GetPropertyHeight(property, label, true);
-        }
-
-        public override void OnGUI(Rect position,
-                                   SerializedProperty property,
-                                   GUIContent label)
-        {
-            GUI.enabled = false;
-            EditorGUI.PropertyField(position, property, label, true);
-            GUI.enabled = true;
-        }
-    }
-
     /// <summary>
     /// Name of spawned enemy
     /// </summary>
     public string enemyName;
+    Background background;
 
     [Range(0, 160)]
     public int health;
     [Range(0, 160)]
     public int maxHealth;
-    [Range(0, 10)]
+    [Range(0, 100)]
     public int maxMana;
-    [Range(0, 10)]
+    [Range(0, 100)]
     public int mana;
 
     public int tier;
@@ -54,6 +30,8 @@ public class Enemy : MonoBehaviour
 
     TextMeshPro nameText;
     PlayerStats player;
+    public StatBars healthBar;
+    public StatBars magicBar;
 
 
     // Start is called before the first frame update
@@ -66,6 +44,8 @@ public class Enemy : MonoBehaviour
         GameObject tempPlayer;
         tempPlayer = GameObject.Find("Player Stats");
         playerStats = tempPlayer.GetComponent<PlayerStats>();
+        healthBar = GameObject.FindGameObjectWithTag("EnemyHealth").GetComponent<StatBars>();
+        magicBar = GameObject.FindGameObjectWithTag("EnemyMana").GetComponent<StatBars>();
     }
 
     public void DoTurn()
@@ -74,79 +54,83 @@ public class Enemy : MonoBehaviour
         print("Enemy turn");
 
         switch (DecideAction()){
-            case 0: //just deal damage
-                //TODO: decrease player health by amount (waiting on player stats)
+            case 0: //just deal damage normally
                 //player.health -= damage;
                         playerStats.TakeDamage(damage);
                     ;break;
 
     // HEALING SPELLS #######################################################
             case 1: //we are going to heal t1
-                mana -= 4;
+                mana -= 40;
                 health += RollDice(2,12);
+                playerStats.UseMagic(-40);
                     ;break;
             case 4: //we are going to heal t2
-                mana -= 5;
+                mana -= 50;
                 health += RollDice(3,12);
+                playerStats.UseMagic(-50);
                     ;break;
             case 5: //we are going to heal t3
-                mana -= 6;
+                mana -= 60;
                 health += RollDice(4,12);
+                playerStats.UseMagic(-60);
                     ;break;
             case 6: //we are going to heal t4
-                mana -= 4;
+                mana -= 70;
                 health += RollDice(5,12) + 15;
+                playerStats.UseMagic(-70);
                     ;break;
     // OFFENSIVE SPELLS #######################################################
             case 2: // WhistleStrike
-                mana -= 1;
+                mana -= 10;
                 playerStats.TakeDamage(RollDice(2,4));
-                playerStats.UseMagic(-1);
+                playerStats.UseMagic(-10);
                     ;break;
             case 3: // FireBolt
-                mana -= 2;
+                mana -= 20;
                 playerStats.TakeDamage(RollDice(2,8));
-                playerStats.UseMagic(-2);
+                playerStats.UseMagic(-20);
                     ;break;
 
             case 7: // lightingBolt
-                mana -= 5;
+                mana -= 50;
                 playerStats.TakeDamage(RollDice(3,10));
-                playerStats.UseMagic(-5);
+                playerStats.UseMagic(-50);
                     ;break;
             case 8: // dark dagger - Bolt
-                mana -= 3;
+                mana -= 30;
                 playerStats.TakeDamage(RollDice(3,8));
-                playerStats.UseMagic(-3);
+                playerStats.UseMagic(-30);
                     ;break;
             case 9: // lightingBolt
-                mana -= 6;
+                mana -= 60;
                 playerStats.TakeDamage(RollDice(5,8));
-                playerStats.UseMagic(-6);
+                playerStats.UseMagic(-60);
                     ;break;
             case 10: // dark dagger - Bolt
-                mana -= 4;
+                mana -= 40;
                 tmpdmg = RollDice(3,8);
                 playerStats.TakeDamage(tmpdmg);
                 health += tmpdmg;
-                playerStats.UseMagic(-4);
+                playerStats.UseMagic(-40);
                     ;break;
             case 11: // lightingBolt
-                mana -= 8;
+                mana -= 80;
                 playerStats.TakeDamage(RollDice(5,12));
-                playerStats.UseMagic(-8);
+                playerStats.UseMagic(-80);
                     ;break;
             case 12: // dark dagger - Bolt
-                mana -= 7;
+                mana -= 70;
                 tmpdmg = RollDice(6,8);
                 playerStats.TakeDamage(tmpdmg);
                 health -= tmpdmg /4;
-                playerStats.UseMagic(-7);
+                playerStats.UseMagic(-70);
                     ;break;
             default:
                 playerStats.TakeDamage(damage); 
                     ;break;
         }
+        magicBar.SetMagic(mana, maxMana);
     }
     
     public int DecideAction(){
@@ -155,53 +139,53 @@ public class Enemy : MonoBehaviour
             if (health <= maxHealth/2){
                 //try and cast heal spell
                 if (tier>=4){
-                    if (mana >= 8) {
+                    if (mana >= 80) {
                         return 6; //HEAL 4
                     }
                 }
                 if (tier>=3){
-                    if (mana >= 6) {
+                    if (mana >= 60) {
                         return 5; //HEAL 3
                     }
                 }
                 if (tier>=2){
-                    if (mana >= 5) {
+                    if (mana >= 50) {
                         return 4; //HEAL 2
                     }
                 }
                 if (tier>=1){
-                    if (mana >= 4) {
+                    if (mana >= 40) {
                         return 1;
                     }
                 }
             }
             // our health is good, lets try and cast a offensive spell (as potent as possible)
             if (tier>=3){
-                if (mana >= 8){
+                if (mana >= 80){
                     return 12;          //DAMAGE 5
-                } else if (mana >= 7){
+                } else if (mana >= 70){
                     return 11;          //DAMAGE 6
                     }
                 }
             
             if (tier>=2){
-                if (mana >= 6){
+                if (mana >= 60){
                     return 10;          //DAMAGE 3
-                } else if (mana >= 4){
+                } else if (mana >= 40){
                     return 9;           //DAMAGE 4
                     }
                 }
             
             if (tier>=1){
-                if (mana >= 5){
+                if (mana >= 50){
                     return 8;           //DAMAGE 2
-                } else if (mana >= 3){
+                } else if (mana >= 30){
                     return 7;           //DAMAGE 1
                     }
                 }
             
             if (tier>=0){
-                if (mana >= 3){
+                if (mana >= 30){
                     return 3;
                 } else if (mana > 0){
                     return 2;
@@ -224,13 +208,38 @@ public class Enemy : MonoBehaviour
 		return totalRolled;
     }
 	
+    /*
 	public void TakeDamage(int val)
 	{
 		health -= val;
-	}
+	} */
 	
 	public float GetCurrentHP()
 	{
 		return health;
 	}
+
+    public void TakeDamage(float dmg)
+	{
+		health -= (int) dmg;
+		healthBar.SetHealth(health, maxHealth);
+        print("Health: " + health + " MaxHealth: " + maxHealth);
+	}
+
+	public void UseMagic(float magic)
+	{
+		if((mana - magic) <= 0)
+		{
+            mana = 0;
+		}
+
+        mana -= (int)magic;
+        magicBar.SetMagic(mana, maxMana);
+    }
+
+    public void CreateStatBars()
+    {
+        healthBar.SetHealth(health, maxHealth);
+		magicBar.SetMagic(mana, maxMana);
+    }
 }

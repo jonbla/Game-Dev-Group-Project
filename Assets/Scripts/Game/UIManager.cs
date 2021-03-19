@@ -68,6 +68,10 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnMagic()
     {
+        if (this.spellOne != null)
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = spellOne.name;
+        else
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = Background.spellOne.name;
         CastSpell.SetActive(true);
 
         Magic.SetActive(false);
@@ -83,10 +87,7 @@ public class UIManager : MonoBehaviour
     {
         if (!fightManager.getIsPlayerTurn())
             return;
-        fightManager.ToggleTurn();
-        print("AHHHHHHHHHH!");
-
-        FightMenu();
+        fightManager.Flee();
     }
 
     /// <summary>
@@ -95,11 +96,25 @@ public class UIManager : MonoBehaviour
     public void OnCastSpell()
     {
         print("AbraKadabra");
-        spellOne = SpellHandler.GetRandomSpell();
+        spellOne = Background.spellOne;
         print("A random spell is: " + spellOne);
+        if (player.GetCurrentMP() < spellOne.cost)
+        {
+            print("no mana, no spell, no damage. Sorry");
+            FightMenu();
+            return;
+        }
         dmg = RollDice(spellOne.rolls, spellOne.dieType);
         enemy.TakeDamage(dmg);
         player.UseMagic(spellOne.cost);
+        if ((enemy.mana + spellOne.cost) > enemy.maxMana)
+        {
+            enemy.mana = enemy.maxMana;
+        }
+        else
+        {
+            enemy.mana += spellOne.cost;
+        }
         print("Spell damage: " + dmg);
         fightManager.ToggleTurn();
 

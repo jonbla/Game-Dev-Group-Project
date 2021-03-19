@@ -6,7 +6,7 @@ public static class UpgradeLibrary
 {
     //This get incremented by the upgrade screen
     static int healthLvl = 0;
-    static int spellLvl = 0;
+    static int spellLvl = 1;
     static int magicLvl = 0;
 
     //These are the upgrade values based on the upgrade screen
@@ -44,6 +44,15 @@ public static class UpgradeLibrary
     public static int GetMagicBonus()
     {
         return magicBonus[magicLvl];
+    }
+
+    /// <summary>
+    /// Gets Spell Level
+    /// </summary>
+    /// <returns>Spell Level</returns>
+    public static int GetSpellLvl()
+    {
+        return spellLvl;
     }
 
     public static void IncrementHealthLvl() {healthLvl++;}

@@ -15,6 +15,11 @@ public class StatBars : MonoBehaviour
             currentHP = maxHP;
         }
 
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+        }
+
 		health.value = currentHP/maxHP;
 	}
 
@@ -25,6 +30,11 @@ public class StatBars : MonoBehaviour
             currentMP = maxMP;
         }
 
-		magic.value = currentMP/maxMP;
+        if (currentMP <= 0)
+        {
+            currentMP = 0;
+        }
+
+        magic.value = currentMP/maxMP;
 	}
 }
