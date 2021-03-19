@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour
@@ -18,7 +19,7 @@ public class FightManager : MonoBehaviour
     public GameObject enemyPrefab;
     private Enemy enemy;
     private GameObject clone;
-    private GameObject playerButtons;
+    private GameObject [] playerButtons;
 
     PlayerStats player;
     LevelLoader levelLoader_Upgrade;
@@ -39,7 +40,7 @@ public class FightManager : MonoBehaviour
         background = GameObject.FindGameObjectWithTag("Background").GetComponent<Background>();
         musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
-        playerButtons = GameObject.FindGameObjectWithTag("PLAYER BUTTONS");
+        playerButtons = GameObject.FindGameObjectsWithTag("Player Button");
         levelLoader_Upgrade = GameObject.Find("Code").transform.Find("Upgrade Load Manager").GetComponent<LevelLoader>();
         levelLoader_EndScreen = GameObject.Find("Code").transform.Find("End Screen Load Manager").GetComponent<LevelLoader>();
         InitFight();
@@ -106,13 +107,22 @@ public class FightManager : MonoBehaviour
     {
         if (!alreadyOn){
             alreadyOn = true;
-            playerButtons.SetActive(false);
+
+            foreach (GameObject button in playerButtons)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }   
+            
             yield return new WaitForSeconds(2);
             enemy.DoTurn();
             yield return new WaitForSeconds(1);
             ToggleTurn();
             alreadyOn = false;
-            playerButtons.SetActive(true);
+
+            foreach (GameObject button in playerButtons)
+            {
+                button.GetComponent<Button>().interactable = true;
+            }
         }
 
     }
