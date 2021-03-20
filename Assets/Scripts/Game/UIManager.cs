@@ -105,8 +105,20 @@ public class UIManager : MonoBehaviour
             return;
         }
         dmg = RollDice(spellOne.rolls, spellOne.dieType);
-        enemy.TakeDamage(dmg);
-        player.UseMagic(spellOne.cost);
+
+        if (dmg < 0) //Heals player if damage is negative
+        {
+            player.TakeDamage(dmg);
+            player.UseMagic(spellOne.cost);
+            print("Spell healed: " + dmg);
+        }
+        else //Otherwise, damages enemy
+        {
+            enemy.TakeDamage(dmg);
+            player.UseMagic(spellOne.cost);
+            print("Spell damage: " + dmg);
+        }
+
         if ((enemy.mana + spellOne.cost) > enemy.maxMana)
         {
             enemy.mana = enemy.maxMana;
@@ -115,9 +127,8 @@ public class UIManager : MonoBehaviour
         {
             enemy.mana += spellOne.cost;
         }
-        print("Spell damage: " + dmg);
-        fightManager.ToggleTurn();
 
+        fightManager.ToggleTurn();
         FightMenu();
     }
 
@@ -139,9 +150,17 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnKick()
     {
-        print("Kick!");
-        enemy.TakeDamage(5);
-        print("Kick damage: 5");
+        if (Random.Range(0, 3) == 0)
+        {
+            print("Kick!");
+            enemy.TakeDamage(15);
+            print("Kick damage: 15");
+        }
+        else
+        {
+            print("Kick missed! No damage done.");
+        }
+        
         fightManager.ToggleTurn();
 
         FightMenu();
@@ -154,10 +173,21 @@ public class UIManager : MonoBehaviour
     {
         // ie, RollDice(2,6) would roll two 6 sided dice
         int totalRolled = 0;
-        for (int i = 0; i < numOfDie; i++)
+        if (dieSides <= 0)
         {
-            totalRolled += Random.Range(1, dieSides);
+            for (int i = 0; i < numOfDie; i++)
+            {
+                totalRolled += Random.Range(dieSides, -1);
+            }
         }
+        else
+        {
+            for (int i = 0; i < numOfDie; i++)
+            {
+                totalRolled += Random.Range(1, dieSides);
+            }
+        }
+
 
         return totalRolled;
     }
