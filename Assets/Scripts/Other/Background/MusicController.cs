@@ -28,14 +28,15 @@ public class MusicController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-
+    /// <summary>
+    /// Stops all audio tracks
+    /// </summary>
     public void StopAll()
     {
-        T1Music.Stop();
-        T2Music.Stop();
-        T3Music.Stop();
-        T4Music.Stop();
-        MenuMusic.Stop();
-        UpgradeMusic.Stop();
+        //More scalable
+        foreach(AudioSource source in sources)
+        {
+            source.Stop();
+        }
     }
 }

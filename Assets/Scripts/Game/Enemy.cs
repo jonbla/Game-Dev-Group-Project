@@ -48,6 +48,9 @@ public class Enemy : MonoBehaviour
         magicBar = GameObject.FindGameObjectWithTag("EnemyMana").GetComponent<StatBars>();
     }
 
+    /// <summary>
+    /// Execute Enemy turn
+    /// </summary>
     public void DoTurn()
     {
         int tmpdmg = 0;
@@ -62,66 +65,66 @@ public class Enemy : MonoBehaviour
     // HEALING SPELLS #######################################################
             case 1: //we are going to heal t1
                 mana -= 40;
-                health += RollDice(2,12);
+                health += Dice.RollDice(2,12);
                 playerStats.UseMagic(-40);
                     ;break;
             case 4: //we are going to heal t2
                 mana -= 50;
-                health += RollDice(3,12);
+                health += Dice.RollDice(3,12);
                 playerStats.UseMagic(-50);
                     ;break;
             case 5: //we are going to heal t3
                 mana -= 60;
-                health += RollDice(4,12);
+                health += Dice.RollDice(4,12);
                 playerStats.UseMagic(-60);
                     ;break;
             case 6: //we are going to heal t4
                 mana -= 70;
-                health += RollDice(5,12) + 15;
+                health += Dice.RollDice(5,12) + 15;
                 playerStats.UseMagic(-70);
                     ;break;
     // OFFENSIVE SPELLS #######################################################
             case 2: // WhistleStrike
                 mana -= 10;
-                playerStats.TakeDamage(RollDice(2,4));
+                playerStats.TakeDamage(Dice.RollDice(2,4));
                 playerStats.UseMagic(-10);
                     ;break;
             case 3: // FireBolt
                 mana -= 20;
-                playerStats.TakeDamage(RollDice(2,8));
+                playerStats.TakeDamage(Dice.RollDice(2,8));
                 playerStats.UseMagic(-20);
                     ;break;
 
             case 7: // lightingBolt
                 mana -= 50;
-                playerStats.TakeDamage(RollDice(3,10));
+                playerStats.TakeDamage(Dice.RollDice(3,10));
                 playerStats.UseMagic(-50);
                     ;break;
             case 8: // dark dagger - Bolt
                 mana -= 30;
-                playerStats.TakeDamage(RollDice(3,8));
+                playerStats.TakeDamage(Dice.RollDice(3,8));
                 playerStats.UseMagic(-30);
                     ;break;
             case 9: // lightingBolt
                 mana -= 60;
-                playerStats.TakeDamage(RollDice(5,8));
+                playerStats.TakeDamage(Dice.RollDice(5,8));
                 playerStats.UseMagic(-60);
                     ;break;
             case 10: // dark dagger - Bolt
                 mana -= 40;
-                tmpdmg = RollDice(3,8);
+                tmpdmg = Dice.RollDice(3,8);
                 playerStats.TakeDamage(tmpdmg);
                 health += tmpdmg;
                 playerStats.UseMagic(-40);
                     ;break;
             case 11: // lightingBolt
                 mana -= 80;
-                playerStats.TakeDamage(RollDice(5,12));
+                playerStats.TakeDamage(Dice.RollDice(5,12));
                 playerStats.UseMagic(-80);
                     ;break;
             case 12: // dark dagger - Bolt
                 mana -= 70;
-                tmpdmg = RollDice(6,8);
+                tmpdmg = Dice.RollDice(6,8);
                 playerStats.TakeDamage(tmpdmg);
                 health -= tmpdmg /4;
                 playerStats.UseMagic(-70);
@@ -133,7 +136,11 @@ public class Enemy : MonoBehaviour
         magicBar.SetMagic(mana, maxMana);
     }
     
-    public int DecideAction(){
+    /// <summary>
+    /// Decide what attack to use
+    /// </summary>
+    /// <returns></returns>
+    int DecideAction(){
         // we have some mana, lets see if we can cast a spell
         if (mana > 0){
             if (health <= maxHealth/2){
@@ -195,30 +202,20 @@ public class Enemy : MonoBehaviour
         // we don't want to cast a spell, use default damage
          return 0;
     }
-
-    private int RollDice(int numOfDie, int dieSides)
-    {
-        // ie, RollDice(2,6) would roll two 6 sided dice
-        int totalRolled = 0;
-        for (int i = 0; i < numOfDie; i++)
-        {
-            totalRolled += Random.Range(1, dieSides);
-        }
-
-		return totalRolled;
-    }
 	
-    /*
-	public void TakeDamage(int val)
-	{
-		health -= val;
-	} */
-	
+    /// <summary>
+    /// Get current health of enemy
+    /// </summary>
+    /// <returns></returns>
 	public float GetCurrentHP()
 	{
 		return health;
 	}
 
+    /// <summary>
+    /// Reduce enemy health
+    /// </summary>
+    /// <param name="dmg">Amount of damage to take</param>
     public void TakeDamage(float dmg)
 	{
 		health -= (int) dmg;
@@ -226,6 +223,10 @@ public class Enemy : MonoBehaviour
         print("Health: " + health + " MaxHealth: " + maxHealth);
 	}
 
+    /// <summary>
+    /// Depletes mana
+    /// </summary>
+    /// <param name="magic">Amount of mana to deplete by</param>
 	public void UseMagic(float magic)
 	{
 		if((mana - magic) <= 0)
@@ -237,7 +238,10 @@ public class Enemy : MonoBehaviour
         magicBar.SetMagic(mana, maxMana);
     }
 
-    public void CreateStatBars()
+    /// <summary>
+    /// Set Stat Bar values
+    /// </summary>
+    public void UpdateStatBars()
     {
         healthBar.SetHealth(health, maxHealth);
 		magicBar.SetMagic(mana, maxMana);

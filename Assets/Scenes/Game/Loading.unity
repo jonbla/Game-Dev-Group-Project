@@ -582,7 +582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadedMain: 0
-  enemyLevel: 0
+  enemyTier: 0
+  playerLost: 0
+  tierDuplicate: 0
 --- !u!1 &1879134248
 GameObject:
   m_ObjectHideFlags: 0

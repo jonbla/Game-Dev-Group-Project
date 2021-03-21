@@ -6,6 +6,6 @@ public class LoadingSceneController : MonoBehaviour
 {
     void Start()
     {
-        GameObject.Find("Load Manager").GetComponent<LevelLoader>().Load();
+        GameObject.Find("Load Manager").GetComponent<LevelLoader>().AnimatedLoad();
     }
 }

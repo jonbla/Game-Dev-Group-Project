@@ -12,6 +12,9 @@ public class EndScreenAnimator : MonoBehaviour
     public Color winColour;
     public Color loseColour;
 
+    /// <summary>
+    /// Text displayed to player
+    /// </summary>
     public TextMeshPro FeedbackText;
 
     Color tempColour;
