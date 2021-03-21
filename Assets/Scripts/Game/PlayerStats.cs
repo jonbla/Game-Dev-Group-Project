@@ -34,12 +34,20 @@ public class PlayerStats : MonoBehaviour
 		/*OnDebugging();*/
 	}
 
+    /// <summary>
+    /// Removes health from player and updates healthbar
+    /// </summary>
+    /// <param name="dmg">Damage to take</param>
 	public void TakeDamage(float dmg)
 	{
 		currentHP -= dmg;
 		healthBar.SetHealth(currentHP, maxHP);
 	}
 
+    /// <summary>
+    /// Removes mana from player and updates manabar
+    /// </summary>
+    /// <param name="magic">Mana to deplete</param>
 	public void UseMagic(float magic)
 	{
 		if((currentMP - magic) <= 0)
@@ -51,16 +59,27 @@ public class PlayerStats : MonoBehaviour
         magicBar.SetMagic(currentMP, maxMP);
     }
 
+    /// <summary>
+    /// Returns Player's current health
+    /// </summary>
+    /// <returns>health</returns>
     public float GetCurrentHP()
     {
         return currentHP;
     }
 
+    /// <summary>
+    /// Returns Player's current mana
+    /// </summary>
+    /// <returns>MP</returns>
     public float GetCurrentMP()
     {
         return currentMP;
     }
 
+    /// <summary>
+    /// Debugging mode
+    /// </summary>
     void OnDebugging()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))

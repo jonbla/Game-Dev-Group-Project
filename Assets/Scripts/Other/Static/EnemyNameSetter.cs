@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Info about enemy
+/// </summary>
 public class EnemyInfo
 {
     public int graphic;
-    public float health;
-    public float mana; 
+    public float health; //these two values
+    public float mana;   //seem to not be used
 }
 
+/// <summary>
+/// Gets info about an enemy of a certain tier
+/// </summary>
 public static class EnemyNameSetter
 {
-    /*static string[,] names = new string[5,4] { {"Bat Evolution", "Beholder Evolution", "Blue Bat", "Glaring Eye" },
-                                               {"Dark Slime","Brain Slime","Clay Slime","Elder Slime"},
-                                               {"Dark Ghost","Beep Evolution","Evil Ghost","Floating Skull"},
-                                               {"Centi Dragon Evolution","Dragon Horn","Boss Dragon","Cockatrice"},
-                                               {"Dark Lord","Dark Lord","Dark Lord","Dark Lord"}
-    };*/
-
     public static EnemyInfo GetEnemyInfo(int tier)
     {
         EnemyInfo info = new EnemyInfo();

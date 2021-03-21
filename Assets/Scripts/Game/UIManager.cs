@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
         FightMenu();        
     }
 
+    /// <summary>
+    /// Resets fight Menu
+    /// </summary>
     public void FightMenu()
     {
         Attack.SetActive(true);

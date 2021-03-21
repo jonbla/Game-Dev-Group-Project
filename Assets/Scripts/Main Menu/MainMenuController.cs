@@ -39,11 +39,17 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Allows background to be modifyable
+    /// </summary>
     public void UnlockBG()
     {
         setBG = false;
     }
 
+    /// <summary>
+    /// Deletes Event System
+    /// </summary>
     public void DeleteEventSystem()
     {
         Destroy(GameObject.Find("EventSystem"));

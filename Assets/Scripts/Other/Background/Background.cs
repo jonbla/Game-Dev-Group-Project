@@ -12,7 +12,15 @@ public class Background : MonoBehaviour
     /// Current Enemy Tier
     /// </summary>
     public int enemyTier = 0;
+
+    /// <summary>
+    /// Flag to indicate if the player has lost or not
+    /// </summary>
     public bool playerLost;
+
+    /// <summary>
+    /// First spell player is spawned with
+    /// </summary>
     public static Spell spellOne = SpellHandler.spells["Fire Bolt"];
 
 
@@ -36,6 +44,9 @@ public class Background : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Increases enemy tier
+    /// </summary>
     public void EnemyLevelUp()
     {
         enemyTier++;
