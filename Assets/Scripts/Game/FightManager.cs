@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 //using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FightManager : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class FightManager : MonoBehaviour
     private GameObject playerButtons;
 
     PlayerStats player;
+
     LevelLoader levelLoader_Upgrade;
     LevelLoader levelLoader_EndScreen;
+    LevelLoader levelLoader_Reload;
 
     bool alreadyOn = false;
+    bool loading = false;
 
     /// <summary>
     /// List of Graphics and names
@@ -50,6 +54,7 @@ public class FightManager : MonoBehaviour
 
         levelLoader_Upgrade = GameObject.Find("Code").transform.Find("Upgrade Load Manager").GetComponent<LevelLoader>();
         levelLoader_EndScreen = GameObject.Find("Code").transform.Find("End Screen Load Manager").GetComponent<LevelLoader>();
+        levelLoader_Reload = GameObject.Find("Code").transform.Find("Reload Load Manager").GetComponent<LevelLoader>();
 
         playerButtons = GameObject.FindGameObjectWithTag("PLAYER BUTTONS");
 
@@ -66,14 +71,28 @@ public class FightManager : MonoBehaviour
 
             isFightActive = false;
 
-            if(enemy.tier >= 4)
+            if (background.tierRematch)
             {
-                levelLoader_EndScreen.BasicLoad();
+                background.tierRematch = false;
+                if (enemy.tier >= 4)
+                {
+                    loading = true;
+                    levelLoader_EndScreen.BasicLoad();                   
+                }
+                else
+                {
+                    loading = true;
+                    levelLoader_Upgrade.BasicLoad();
+                }
             }
             else
             {
-                levelLoader_Upgrade.BasicLoad();
-            }            
+                if (!loading)
+                {
+                    background.tierRematch = true;
+                    levelLoader_Reload.ReloadCurrentScene();
+                }
+            }                    
         }
 
         if(player.GetCurrentHP() <= 0f)

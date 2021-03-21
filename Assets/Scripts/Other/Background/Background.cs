@@ -5,7 +5,9 @@ using UnityEngine;
 /// </summary>
 public class Background : MonoBehaviour
 {
-
+    /// <summary>
+    /// Checks if main menu has been reloaded
+    /// </summary>
     public bool reloadedMain = false;
 
     /// <summary>
@@ -22,6 +24,11 @@ public class Background : MonoBehaviour
     /// First spell player is spawned with
     /// </summary>
     public static Spell spellOne = SpellHandler.spells["Fire Bolt"];
+
+    /// <summary>
+    /// Indicates if the game is on round 1 or 2 of the tier level
+    /// </summary>
+    public bool tierRematch = false;
 
 
     void Start()

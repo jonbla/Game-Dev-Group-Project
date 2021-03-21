@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -72,9 +73,9 @@ public class UIManager : MonoBehaviour
     public void OnMagic()
     {
         if (this.spellOne != null)
-            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = spellOne.name;
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = spellOne.name;
         else
-            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = Background.spellOne.name;
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = Background.spellOne.name;
         CastSpell.SetActive(true);
 
         Magic.SetActive(false);
@@ -107,7 +108,7 @@ public class UIManager : MonoBehaviour
             FightMenu();
             return;
         }
-        dmg = RollDice(spellOne.rolls, spellOne.dieType);
+        dmg = Dice.RollDice(spellOne.rolls, spellOne.dieType);
         enemy.TakeDamage(dmg);
         player.UseMagic(spellOne.cost);
         if ((enemy.mana + spellOne.cost) > enemy.maxMana)
@@ -148,20 +149,5 @@ public class UIManager : MonoBehaviour
         fightManager.ToggleTurn();
 
         FightMenu();
-    }
-
-    /// <summary>
-    /// Calculates damage for spells
-    /// </summary>
-    private int RollDice(int numOfDie, int dieSides)
-    {
-        // ie, RollDice(2,6) would roll two 6 sided dice
-        int totalRolled = 0;
-        for (int i = 0; i < numOfDie; i++)
-        {
-            totalRolled += Random.Range(1, dieSides);
-        }
-
-        return totalRolled;
     }
 }

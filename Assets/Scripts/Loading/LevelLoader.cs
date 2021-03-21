@@ -124,4 +124,10 @@ public class LevelLoader : MonoBehaviour
     {
         BasicLoad((int)levelToLoad);
     }
+
+    public void ReloadCurrentScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
 }
