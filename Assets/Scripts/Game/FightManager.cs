@@ -150,9 +150,9 @@ public class FightManager : MonoBehaviour
         if (!alreadyOn){
             alreadyOn = true;
             playerButtons.SetActive(false);
-            yield return new WaitForSeconds(2);
-            enemy.DoTurn();
             yield return new WaitForSeconds(1);
+            enemy.DoTurn();
+            yield return new WaitForSeconds(.5f);
             ToggleTurn();
             alreadyOn = false;
             playerButtons.SetActive(true);

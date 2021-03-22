@@ -57,4 +57,11 @@ public class ToolTipManager : MonoBehaviour
         isTweening = false;
         toolTip.SetActive(false);
     }
+
+    public void OnPointerClick()
+    {
+        isHovering = false;
+        isTweening = false;
+        toolTip.SetActive(false);
+    }
 }
