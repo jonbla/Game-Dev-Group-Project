@@ -133,7 +133,8 @@ public class Enemy : MonoBehaviour
                 playerStats.TakeDamage(damage); 
                     ;break;
         }
-        magicBar.SetMagic(mana, maxMana);
+        
+        UpdateStatBars();
     }
     
     /// <summary>
