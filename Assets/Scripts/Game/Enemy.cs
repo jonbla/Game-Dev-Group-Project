@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     PlayerStats player;
     public StatBars healthBar;
     public StatBars magicBar;
+    public MusicController musicController;
 
 
     // Start is called before the first frame update
@@ -46,6 +47,12 @@ public class Enemy : MonoBehaviour
         playerStats = tempPlayer.GetComponent<PlayerStats>();
         healthBar = GameObject.FindGameObjectWithTag("EnemyHealth").GetComponent<StatBars>();
         magicBar = GameObject.FindGameObjectWithTag("EnemyMana").GetComponent<StatBars>();
+
+        musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+        
+    }
+    void Update(){
+    	UpdateStatBars();
     }
 
     /// <summary>
@@ -60,6 +67,7 @@ public class Enemy : MonoBehaviour
             case 0: //just deal damage normally
                 //player.health -= damage;
                         playerStats.TakeDamage(damage);
+                        musicController.EnemyPunchSound.Play();
                     ;break;
 
     // HEALING SPELLS #######################################################
@@ -67,48 +75,57 @@ public class Enemy : MonoBehaviour
                 mana -= 40;
                 health += Dice.RollDice(2,12);
                 playerStats.UseMagic(-40);
+                musicController.HealSound.Play();
                     ;break;
             case 4: //we are going to heal t2
                 mana -= 50;
                 health += Dice.RollDice(3,12);
                 playerStats.UseMagic(-50);
+                musicController.HealSound.Play();
                     ;break;
             case 5: //we are going to heal t3
                 mana -= 60;
                 health += Dice.RollDice(4,12);
                 playerStats.UseMagic(-60);
+                musicController.HealSound.Play();
                     ;break;
             case 6: //we are going to heal t4
                 mana -= 70;
                 health += Dice.RollDice(5,12) + 15;
                 playerStats.UseMagic(-70);
+                musicController.HealSound.Play();
                     ;break;
     // OFFENSIVE SPELLS #######################################################
             case 2: // WhistleStrike
                 mana -= 10;
                 playerStats.TakeDamage(Dice.RollDice(2,4));
                 playerStats.UseMagic(-10);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 3: // FireBolt
                 mana -= 20;
                 playerStats.TakeDamage(Dice.RollDice(2,8));
                 playerStats.UseMagic(-20);
+                musicController.EnemyMagicSound.Play();
                     ;break;
 
             case 7: // lightingBolt
                 mana -= 50;
                 playerStats.TakeDamage(Dice.RollDice(3,10));
                 playerStats.UseMagic(-50);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 8: // dark dagger - Bolt
                 mana -= 30;
                 playerStats.TakeDamage(Dice.RollDice(3,8));
                 playerStats.UseMagic(-30);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 9: // lightingBolt
                 mana -= 60;
                 playerStats.TakeDamage(Dice.RollDice(5,8));
                 playerStats.UseMagic(-60);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 10: // dark dagger - Bolt
                 mana -= 40;
@@ -116,11 +133,13 @@ public class Enemy : MonoBehaviour
                 playerStats.TakeDamage(tmpdmg);
                 health += tmpdmg;
                 playerStats.UseMagic(-40);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 11: // lightingBolt
                 mana -= 80;
                 playerStats.TakeDamage(Dice.RollDice(5,12));
                 playerStats.UseMagic(-80);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             case 12: // dark dagger - Bolt
                 mana -= 70;
@@ -128,9 +147,11 @@ public class Enemy : MonoBehaviour
                 playerStats.TakeDamage(tmpdmg);
                 health -= tmpdmg /4;
                 playerStats.UseMagic(-70);
+                musicController.EnemyMagicSound.Play();
                     ;break;
             default:
                 playerStats.TakeDamage(damage); 
+                musicController.EnemyPunchSound.Play();
                     ;break;
         }
         

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-	float maxHP;
-	float currentHP;
+	public float maxHP;
+	public float currentHP;
 
-	float maxMP;
-	float currentMP;
+	public float maxMP;
+	public float currentMP;
 
 	public StatBars healthBar;
 	public StatBars magicBar;
@@ -31,7 +31,12 @@ public class PlayerStats : MonoBehaviour
 
 	void Update()
 	{
-		/*OnDebugging();*/
+		if (currentHP > maxHP){
+            currentHP = maxHP;
+        }
+        if (currentMP > maxMP){
+            currentMP = maxMP;
+        }
 	}
 
     /// <summary>
