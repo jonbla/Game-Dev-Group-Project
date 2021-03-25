@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     public StatBars magicBar;
     public MusicController musicController;
 
+    public damageBump animController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,7 @@ public class Enemy : MonoBehaviour
                 //player.health -= damage;
                         playerStats.TakeDamage(damage);
                         musicController.EnemyPunchSound.Play();
+                        animController.bumpDown();
                     ;break;
 
     // HEALING SPELLS #######################################################
@@ -76,24 +79,28 @@ public class Enemy : MonoBehaviour
                 health += Dice.RollDice(2,12);
                 playerStats.UseMagic(-40);
                 musicController.HealSound.Play();
+                animController.bumpUp();
                     ;break;
             case 4: //we are going to heal t2
                 mana -= 50;
                 health += Dice.RollDice(3,12);
                 playerStats.UseMagic(-50);
                 musicController.HealSound.Play();
+                animController.bumpUp();
                     ;break;
             case 5: //we are going to heal t3
                 mana -= 60;
                 health += Dice.RollDice(4,12);
                 playerStats.UseMagic(-60);
                 musicController.HealSound.Play();
+                animController.bumpUp();
                     ;break;
             case 6: //we are going to heal t4
                 mana -= 70;
                 health += Dice.RollDice(5,12) + 15;
                 playerStats.UseMagic(-70);
                 musicController.HealSound.Play();
+                animController.bumpUp();
                     ;break;
     // OFFENSIVE SPELLS #######################################################
             case 2: // WhistleStrike
@@ -101,12 +108,14 @@ public class Enemy : MonoBehaviour
                 playerStats.TakeDamage(Dice.RollDice(2,4));
                 playerStats.UseMagic(-10);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 3: // FireBolt
                 mana -= 20;
                 playerStats.TakeDamage(Dice.RollDice(2,8));
                 playerStats.UseMagic(-20);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
 
             case 7: // lightingBolt
@@ -114,18 +123,21 @@ public class Enemy : MonoBehaviour
                 playerStats.TakeDamage(Dice.RollDice(3,10));
                 playerStats.UseMagic(-50);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 8: // dark dagger - Bolt
                 mana -= 30;
                 playerStats.TakeDamage(Dice.RollDice(3,8));
                 playerStats.UseMagic(-30);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 9: // lightingBolt
                 mana -= 60;
                 playerStats.TakeDamage(Dice.RollDice(5,8));
                 playerStats.UseMagic(-60);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 10: // dark dagger - Bolt
                 mana -= 40;
@@ -134,12 +146,14 @@ public class Enemy : MonoBehaviour
                 health += tmpdmg;
                 playerStats.UseMagic(-40);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 11: // lightingBolt
                 mana -= 80;
                 playerStats.TakeDamage(Dice.RollDice(5,12));
                 playerStats.UseMagic(-80);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             case 12: // dark dagger - Bolt
                 mana -= 70;
@@ -148,10 +162,12 @@ public class Enemy : MonoBehaviour
                 health -= tmpdmg /4;
                 playerStats.UseMagic(-70);
                 musicController.EnemyMagicSound.Play();
+                animController.bumpDown();
                     ;break;
             default:
                 playerStats.TakeDamage(damage); 
                 musicController.EnemyPunchSound.Play();
+                animController.bumpDown();
                     ;break;
         }
         
@@ -243,6 +259,7 @@ public class Enemy : MonoBehaviour
 		health -= (int) dmg;
 		healthBar.SetHealth(health, maxHealth);
         print("Health: " + health + " MaxHealth: " + maxHealth);
+        animController.bumpUp();
 	}
 
     /// <summary>
