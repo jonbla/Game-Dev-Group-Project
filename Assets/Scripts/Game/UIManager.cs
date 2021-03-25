@@ -24,12 +24,13 @@ public class UIManager : MonoBehaviour
     Enemy enemy;
 
     private int dmg;
+    public MusicController musicController;
 
     //Set the default configuration on start
     private void Start()
     {
         fightManager = GameObject.Find("Code").transform.Find("Fight Manager").GetComponent<FightManager>();
-
+        musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
         //These two pieces of code allow us to edit player and enemy stats inside this script
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
         enemy = GameObject.Find("Enemy(Clone)").GetComponent<Enemy>();
@@ -131,6 +132,7 @@ public class UIManager : MonoBehaviour
         {
             enemy.mana += spellOne.cost;
         }
+        musicController.PlayerMagicSound.Play();
 
         fightManager.ToggleTurn();
         FightMenu();
@@ -145,7 +147,7 @@ public class UIManager : MonoBehaviour
         enemy.TakeDamage(5);
         print("Punch damage: 5");
         fightManager.ToggleTurn();
-
+        musicController.PunchSound.Play();
         FightMenu();
     }
 
@@ -154,11 +156,12 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnKick()
     {
-        if (Random.Range(0, 3) == 0)
+        if (Random.Range(0, 3) != 0)
         {
             print("Kick!");
             enemy.TakeDamage(15);
             print("Kick damage: 15");
+            musicController.PunchSound.Play();
         }
         else
         {
