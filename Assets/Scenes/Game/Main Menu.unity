@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edce93d89139fe4282bda222d3d5f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 2
+  levelToLoad: 3
   currentScene: 1
 --- !u!4 &390366644
 Transform:
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edce93d89139fe4282bda222d3d5f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 5
+  levelToLoad: 6
   currentScene: 1
 --- !u!1 &510446056
 GameObject:
@@ -2189,7 +2189,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
