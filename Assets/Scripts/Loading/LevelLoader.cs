@@ -20,10 +20,11 @@ public class LevelLoader : MonoBehaviour
     {
         LOADING,
         MAIN_MENU,
+        MAIN_MENU_NO_DELAY,
         GAME_SCENE,
         UPGRADES,
         END_SCREEN,
-        INFO
+        INFO,        
     };
 
     /// <summary>
