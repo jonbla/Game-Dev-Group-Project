@@ -2,6 +2,7 @@ using System.ComponentModel;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controller for Enemy prefab
@@ -33,6 +34,8 @@ public class Enemy : MonoBehaviour
     public StatBars healthBar;
     public StatBars magicBar;
     public MusicController musicController;
+    public Text HPText;
+    public Text MPText;
 
     public damageBump animController;
 
@@ -51,6 +54,9 @@ public class Enemy : MonoBehaviour
         magicBar = GameObject.FindGameObjectWithTag("EnemyMana").GetComponent<StatBars>();
 
         musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+
+        HPText.text = health.ToString() + "/" + maxHealth.ToString();
+        MPText.text = mana.ToString() + "/" + maxMana.ToString();
         
     }
     void Update(){
@@ -284,5 +290,9 @@ public class Enemy : MonoBehaviour
     {
         healthBar.SetHealth(health, maxHealth);
 		magicBar.SetMagic(mana, maxMana);
+        //Left these commented out, since enemy stats are hidden
+        //if we want to display stats, uncomment these lines
+        //HPText.text = health.ToString() + "/" + maxHealth.ToString();
+        //MPText.text = mana.ToString() + "/" + maxMana.ToString();
     }
 }

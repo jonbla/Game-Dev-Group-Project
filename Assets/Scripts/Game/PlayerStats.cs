@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerStats : MonoBehaviour
 
 	public StatBars healthBar;
 	public StatBars magicBar;
+
+	public Text HPText;
+	public Text MPText;
 
 	void Start()
 	{
@@ -27,6 +31,9 @@ public class PlayerStats : MonoBehaviour
 
 		healthBar.SetHealth(currentHP, maxHP);
 		magicBar.SetMagic(currentMP, maxMP);
+
+		HPText.text = currentHP.ToString() + "/" + maxHP.ToString();
+		MPText.text = currentMP.ToString() + "/" + maxMP.ToString();
 	}
 
 	void Update()
@@ -47,6 +54,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		currentHP -= dmg;
 		healthBar.SetHealth(currentHP, maxHP);
+		HPText.text = currentHP.ToString() + "/" + maxHP.ToString();
 	}
 
     /// <summary>
@@ -62,6 +70,7 @@ public class PlayerStats : MonoBehaviour
 
         currentMP -= magic;
         magicBar.SetMagic(currentMP, maxMP);
+        MPText.text = currentMP.ToString() + "/" + maxMP.ToString();
     }
 
     /// <summary>
