@@ -21,6 +21,7 @@ public class MusicController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Resolves duplication issue
         sources = GetComponents<AudioSource>();
 
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Music");

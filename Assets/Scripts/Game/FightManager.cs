@@ -64,38 +64,24 @@ public class FightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy.GetCurrentHP() <= 0f)
+        if (enemy.GetCurrentHP() <= 0f)
         {
-            print("Enemy: "+enemy.GetCurrentHP());
+            print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
 
-            if (background.tierRematch)
+            if (enemy.tier >= 4)
             {
-                background.tierRematch = false;
-                if (enemy.tier >= 4)
-                {
-                    loading = true;
-                    levelLoader_EndScreen.BasicLoad();                   
-                }
-                else
-                {
-                    loading = true;
-                    levelLoader_Upgrade.BasicLoad();
-                }
+                levelLoader_EndScreen.BasicLoad();
             }
             else
             {
-                if (!loading)
-                {
-                    background.tierRematch = true;
-                    levelLoader_Reload.ReloadCurrentScene();
-                }
-            }                    
+                levelLoader_Upgrade.BasicLoad();
+            }
         }
 
-        if(player.GetCurrentHP() <= 0f)
+        if (player.GetCurrentHP() <= 0f)
         {
             print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());

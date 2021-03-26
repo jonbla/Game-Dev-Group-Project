@@ -5,9 +5,7 @@ using UnityEngine;
 /// </summary>
 public class Background : MonoBehaviour
 {
-    /// <summary>
-    /// Checks if main menu has been reloaded
-    /// </summary>
+
     public bool reloadedMain = false;
 
     /// <summary>
@@ -25,17 +23,12 @@ public class Background : MonoBehaviour
     /// </summary>
     public static Spell spellOne = SpellHandler.spells["Fire Bolt"];
 
-    /// <summary>
-    /// Indicates if the game is on round 1 or 2 of the tier level
-    /// </summary>
-    public bool tierRematch = false;
-
 
     void Start()
     {
         //Resolves duplication issue
-        GameObject [] gameObjects = GameObject.FindGameObjectsWithTag("Background");
-        if(gameObjects.Length >= 2)
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Background");
+        if (gameObjects.Length >= 2)
         {
             Destroy(gameObjects[gameObjects.Length - 1].gameObject);
         }
