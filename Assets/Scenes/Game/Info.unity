@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edce93d89139fe4282bda222d3d5f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 1
+  levelToLoad: 6
   currentScene: 5
 --- !u!1 &1106269566
 GameObject:
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.3
+  m_fontSize: 59.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
