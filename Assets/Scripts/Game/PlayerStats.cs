@@ -44,6 +44,9 @@ public class PlayerStats : MonoBehaviour
         if (currentMP > maxMP){
             currentMP = maxMP;
         }
+        
+        HPText.text = currentHP.ToString() + "/" + maxHP.ToString();
+        MPText.text = currentMP.ToString() + "/" + maxMP.ToString();
 	}
 
     /// <summary>
@@ -54,7 +57,6 @@ public class PlayerStats : MonoBehaviour
 	{
 		currentHP -= dmg;
 		healthBar.SetHealth(currentHP, maxHP);
-		HPText.text = currentHP.ToString() + "/" + maxHP.ToString();
 	}
 
     /// <summary>
@@ -70,7 +72,6 @@ public class PlayerStats : MonoBehaviour
 
         currentMP -= magic;
         magicBar.SetMagic(currentMP, maxMP);
-        MPText.text = currentMP.ToString() + "/" + maxMP.ToString();
     }
 
     /// <summary>

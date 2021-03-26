@@ -55,8 +55,10 @@ public class Enemy : MonoBehaviour
 
         musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
 
-        HPText.text = health.ToString() + "/" + maxHealth.ToString();
-        MPText.text = mana.ToString() + "/" + maxMana.ToString();
+        //Left these commented out, since enemy stats are hidden
+        //if we want to display stats, uncomment these lines
+        //HPText.text = health.ToString() + "/" + maxHealth.ToString();
+        //MPText.text = mana.ToString() + "/" + maxMana.ToString();
         
     }
     void Update(){
