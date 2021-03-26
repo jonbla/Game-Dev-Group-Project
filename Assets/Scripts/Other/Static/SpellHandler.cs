@@ -28,11 +28,16 @@ public class Spell
         cost = _cost;
     }
 
+    /// <summary>
+    /// String representation of Spell
+    /// </summary>
+    /// <returns>Name</returns>
     public override string ToString()
     {
         return name;
     }
 }
+
 
 public static class SpellHandler
 {
@@ -50,20 +55,20 @@ public static class SpellHandler
         //Tier 1 spells
         AddSpell("Fire Bolt", 3, 6, 1, 20);
         AddSpell("Whistling Strike", 3, 4, 1, 10);
-        //AddSpell("Minor Heal",2,-12,1,4);
+        AddSpell("Minor Heal",2,-12,1,4);
         //Tier 2 spells
         AddSpell("Lightning Bolt",3,10,2,50);
         AddSpell("Dark Daggers",3,8,2,30);
-        //AddSpell("Rejuvenating Heal",3,-12,2,5);
+        AddSpell("Rejuvenating Heal",3,-12,2,5);
         //AddSpell("Minor Mana Drain",3,10,2,0); //Not sure if this spell would work with this system, so I'm leaving it out for now (No way to affect MP)
         //Tier 3 spells
         AddSpell("Fireball",5,8,3,60);
         //AddSpell("Lifedrain",2,8,3,4); //No way to deal damage and heal at same time
-        //AddSpell("Major Heal",4,-12,3,6);
+        AddSpell("Major Heal",4,-12,3,6);
         //Tier 4 spells
         AddSpell("Fireblast",5,12,4,80);
         AddSpell("Aggressive Charge",6,8,4,60); //Won't deal damage to caster as it stands
-        //AddSpell("Superb Heal",5,10,4,8);
+        AddSpell("Superb Heal",5,-10,4,8);
         //AddSpell("Lightning Bolt",3,10,4,5); //Not sure if this spell would work with this system, so I'm leaving it out for now (No way to affect MP)
     }
 
@@ -90,8 +95,12 @@ public static class SpellHandler
         return spells[randomName];
     }
 
-    //Returns a random spell of a certain tier
-    //If no such spell exists, it will return null.
+
+    /// <summary>
+    /// Returns a random spell of a certain tier
+    /// </summary>
+    /// <param name="tier">Target tier</param>
+    /// <returns>Random spell of target tier, Returns Null if false</returns>
     public static Spell GetRandomSpell(int tier)
     {
         List<Spell> tempList = new List<Spell>();
@@ -110,6 +119,12 @@ public static class SpellHandler
     //If one does not exist it will get a spell of the next lowest tier.
     //And so on and so forth. If it never finds a spell by the time it get to tier '0'
     //It will return null.
+
+    /// <summary>
+    /// This function will start the tier given to it and find a random spell of that tier
+    /// </summary>
+    /// <param name="tier">Target tier</param>
+    /// <returns>Spell of target tier, returns null if no spell is found</returns>
     public static Spell GetRandomSpellUnderTier(int tier)
     {
         Spell toRet;

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -23,12 +24,13 @@ public class UIManager : MonoBehaviour
     Enemy enemy;
 
     private int dmg;
+    public MusicController musicController;
 
     //Set the default configuration on start
     private void Start()
     {
         fightManager = GameObject.Find("Code").transform.Find("Fight Manager").GetComponent<FightManager>();
-
+        musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
         //These two pieces of code allow us to edit player and enemy stats inside this script
         player = GameObject.Find("Code").transform.Find("Player Stats").GetComponent<PlayerStats>();
         enemy = GameObject.Find("Enemy(Clone)").GetComponent<Enemy>();
@@ -36,6 +38,9 @@ public class UIManager : MonoBehaviour
         FightMenu();        
     }
 
+    /// <summary>
+    /// Resets fight Menu
+    /// </summary>
     public void FightMenu()
     {
         Attack.SetActive(true);
@@ -69,9 +74,9 @@ public class UIManager : MonoBehaviour
     public void OnMagic()
     {
         if (this.spellOne != null)
-            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = spellOne.name;
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = spellOne.name;
         else
-            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMPro.TMP_Text>().text = Background.spellOne.name;
+            CastSpell.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = Background.spellOne.name;
         CastSpell.SetActive(true);
 
         Magic.SetActive(false);
@@ -104,9 +109,21 @@ public class UIManager : MonoBehaviour
             FightMenu();
             return;
         }
-        dmg = RollDice(spellOne.rolls, spellOne.dieType);
-        enemy.TakeDamage(dmg);
-        player.UseMagic(spellOne.cost);
+        dmg = Dice.RollDice(spellOne.rolls, spellOne.dieType);
+
+        if (dmg < 0) //Heals player if damage is negative
+        {
+            player.TakeDamage(dmg);
+            player.UseMagic(spellOne.cost);
+            print("Spell healed: " + dmg);
+        }
+        else //Otherwise, damages enemy
+        {
+            enemy.TakeDamage(dmg);
+            player.UseMagic(spellOne.cost);
+            print("Spell damage: " + dmg);
+        }
+
         if ((enemy.mana + spellOne.cost) > enemy.maxMana)
         {
             enemy.mana = enemy.maxMana;
@@ -115,9 +132,9 @@ public class UIManager : MonoBehaviour
         {
             enemy.mana += spellOne.cost;
         }
-        print("Spell damage: " + dmg);
-        fightManager.ToggleTurn();
+        musicController.PlayerMagicSound.Play();
 
+        fightManager.ToggleTurn();
         FightMenu();
     }
 
@@ -130,7 +147,7 @@ public class UIManager : MonoBehaviour
         enemy.TakeDamage(5);
         print("Punch damage: 5");
         fightManager.ToggleTurn();
-
+        musicController.PunchSound.Play();
         FightMenu();
     }
 
@@ -139,26 +156,20 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnKick()
     {
-        print("Kick!");
-        enemy.TakeDamage(5);
-        print("Kick damage: 5");
+        if (Random.Range(0, 3) != 0)
+        {
+            print("Kick!");
+            enemy.TakeDamage(15);
+            print("Kick damage: 15");
+            musicController.PunchSound.Play();
+        }
+        else
+        {
+            print("Kick missed! No damage done.");
+        }
+        
         fightManager.ToggleTurn();
 
         FightMenu();
-    }
-
-    /// <summary>
-    /// Calculates damage for spells
-    /// </summary>
-    private int RollDice(int numOfDie, int dieSides)
-    {
-        // ie, RollDice(2,6) would roll two 6 sided dice
-        int totalRolled = 0;
-        for (int i = 0; i < numOfDie; i++)
-        {
-            totalRolled += Random.Range(1, dieSides);
-        }
-
-        return totalRolled;
     }
 }

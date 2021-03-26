@@ -39,13 +39,26 @@ public class ToolTipManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when user mouses over button
+    /// </summary>
     public void OnEnterHover()
     {
         startTime = Time.time;
         isHovering = true;        
     }
 
+    /// <summary>
+    /// Called when user stops mousing over button
+    /// </summary>
     public void OnExitHover()
+    {
+        isHovering = false;
+        isTweening = false;
+        toolTip.SetActive(false);
+    }
+
+    public void OnPointerClick()
     {
         isHovering = false;
         isTweening = false;

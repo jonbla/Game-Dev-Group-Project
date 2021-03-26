@@ -5,15 +5,30 @@ using UnityEngine;
 /// </summary>
 public class Background : MonoBehaviour
 {
-
+    /// <summary>
+    /// Checks if main menu has been reloaded
+    /// </summary>
     public bool reloadedMain = false;
 
     /// <summary>
     /// Current Enemy Tier
     /// </summary>
     public int enemyTier = 0;
+
+    /// <summary>
+    /// Flag to indicate if the player has lost or not
+    /// </summary>
     public bool playerLost;
+
+    /// <summary>
+    /// First spell player is spawned with
+    /// </summary>
     public static Spell spellOne = SpellHandler.spells["Fire Bolt"];
+
+    /// <summary>
+    /// Indicates if the game is on round 1 or 2 of the tier level
+    /// </summary>
+    public bool tierRematch = false;
 
 
     void Start()
@@ -36,6 +51,9 @@ public class Background : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Increases enemy tier
+    /// </summary>
     public void EnemyLevelUp()
     {
         enemyTier++;

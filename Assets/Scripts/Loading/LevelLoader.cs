@@ -20,10 +20,11 @@ public class LevelLoader : MonoBehaviour
     {
         LOADING,
         MAIN_MENU,
+        MAIN_MENU_NO_DELAY,
         GAME_SCENE,
         UPGRADES,
         END_SCREEN,
-        INFO
+        INFO,        
     };
 
     /// <summary>
@@ -39,13 +40,17 @@ public class LevelLoader : MonoBehaviour
     /// <summary>
     /// Load the Desired Scene
     /// </summary>
-    public void Load()
+    public void AnimatedLoad()
     {
         hasBeenLoaded = true;
         StartCoroutine(LoadAsynchronously((int)levelToLoad));
     }
 
-    public void Load(int lvlIndex)
+    /// <summary>
+    /// Load the Desired Scene
+    /// </summary>
+    /// <param name="lvlIndex">Level to load</param>
+    public void AnimatedLoad(int lvlIndex)
     {
         hasBeenLoaded = true;
         StartCoroutine(LoadAsynchronously(lvlIndex));
@@ -57,7 +62,6 @@ public class LevelLoader : MonoBehaviour
     void Animate()
     {
         if (!hasBeenLoaded) return;
-        //DOTween.Play(2,2);
         DOTween.PlayAll();
     }
 
@@ -105,12 +109,26 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Do regular scene change
+    /// </summary>
+    /// <param name="lvl">Level to load</param>
     public void BasicLoad(int lvl)
     {
         StartCoroutine(LoadBasicAsynchronously((int)lvl));
     }
+
+    /// <summary>
+    /// Do regular scene change
+    /// </summary>
     public void BasicLoad()
     {
         BasicLoad((int)levelToLoad);
+    }
+
+    public void ReloadCurrentScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

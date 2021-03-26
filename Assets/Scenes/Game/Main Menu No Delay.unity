@@ -246,7 +246,7 @@ MonoBehaviour:
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
-  delay: 2
+  delay: 0
   duration: 1
   easeType: 6
   easeCurve:
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 3
-  currentScene: 1
+  currentScene: 2
 --- !u!4 &390366644
 Transform:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 6
-  currentScene: 1
+  currentScene: 2
 --- !u!1 &510446056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
-  delay: 2.7
+  delay: 0.7
   duration: 1
   easeType: 6
   easeCurve:
@@ -3112,7 +3112,7 @@ MonoBehaviour:
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
-  delay: 2
+  delay: 0
   duration: 1
   easeType: 30
   easeCurve:
