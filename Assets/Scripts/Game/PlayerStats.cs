@@ -54,8 +54,11 @@ public class PlayerStats : MonoBehaviour
 
         if (isTweening)
         {
-            healthBar.SetHealth(Mathf.RoundToInt(currentHP), maxHP);
-            magicBar.SetMagic(Mathf.RoundToInt(currentMP), maxMP);
+            healthBar.SetHealth(currentHP, maxHP);
+            magicBar.SetMagic(currentMP, maxMP);
+
+            HPText.text = Mathf.RoundToInt(currentHP).ToString() + "/" + maxHP.ToString();
+            MPText.text = Mathf.RoundToInt(currentMP).ToString() + "/" + maxMP.ToString();
         }
 	}
 
