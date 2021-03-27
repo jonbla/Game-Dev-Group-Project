@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         if (player.GetCurrentMP() < spellOne.cost)
         {
             print("no mana, no spell, no damage. Sorry");
-            PlayerFeedback("Not Enough Mana");
+            PlayerFeedback("No Mana");
             FightMenu();
             return;
         }
