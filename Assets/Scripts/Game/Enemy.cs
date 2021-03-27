@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using TMPro;
 using UnityEditor;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,10 +28,13 @@ public class Enemy : MonoBehaviour
     public int tier;
     public int damage = 5;
 
+    public bool isDead = false;
+
     public PlayerStats playerStats;
 
     TextMeshPro nameText;
     PlayerStats player;
+
     public StatBars healthBar;
     public StatBars magicBar;
     public MusicController musicController;
@@ -296,5 +300,19 @@ public class Enemy : MonoBehaviour
         //if we want to display stats, uncomment these lines
         //HPText.text = health.ToString() + "/" + maxHealth.ToString();
         //MPText.text = mana.ToString() + "/" + maxMana.ToString();
+    }
+
+    public void Die()
+    {
+        transform.DOShakePosition(1.5f, new Vector3(1, 1, 0)).SetAutoKill(true).OnComplete(LeaveScreen);
+    }
+
+    void LeaveScreen()
+    {
+        transform.Find("Vertical Container").transform.Find("Sprite").transform.DOMoveY(-10, 2).SetAutoKill(true).OnComplete(AnnounceDeath);
+    }
+    void AnnounceDeath()
+    {
+        isDead = true;
     }
 }

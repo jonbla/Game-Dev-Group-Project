@@ -10,7 +10,7 @@ public class PopupScript : MonoBehaviour
     void Start()
     {
         transform.DOMove(new Vector3(0,0,-5), 2).SetAutoKill(true);
-        GetComponent<TextMeshPro>().DOFade(0, 2).OnComplete(KillYourself);
+        GetComponent<TextMeshPro>().DOFade(0, 2.3f).SetAutoKill(true).OnComplete(KillYourself);
     }
 
     void KillYourself()

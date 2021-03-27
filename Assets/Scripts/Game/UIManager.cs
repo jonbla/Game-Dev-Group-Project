@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         if (player.GetCurrentMP() < spellOne.cost)
         {
             print("no mana, no spell, no damage. Sorry");
-            PlayerFeedBack("no mana, no spell, no damage.Sorry");
+            PlayerFeedback("No Mana");
             FightMenu();
             return;
         }
@@ -169,7 +169,7 @@ public class UIManager : MonoBehaviour
         else
         {
             print("Kick missed! No damage done.");
-            PlayerFeedBack("Kick missed! No damage done.");
+            PlayerFeedback("Miss!");
         }
         
         fightManager.ToggleTurn();
@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
         FightMenu();
     }
 
-    void PlayerFeedBack(string text)
+    void PlayerFeedback(string text)
     {
         TextMeshPro feedbackTextObject = Instantiate(popupPrefab).GetComponent<TextMeshPro>();
         feedbackTextObject.text = text;
