@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -69,28 +68,11 @@ public class FightManager : MonoBehaviour
         {
             if (enemy.isDead)
             {
-                if (background.tierRematch)
+                if (player.readyToKill)
                 {
-                    background.tierRematch = false;
-                    if (enemy.tier >= 4)
-                    {
-                        loading = true;
-                        levelLoader_EndScreen.BasicLoad();
-                    }
-                    else
-                    {
-                        loading = true;
-                        levelLoader_Upgrade.BasicLoad();
-                    }
+                    DoSceneChange();
                 }
-                else
-                {
-                    if (!loading)
-                    {
-                        background.tierRematch = true;
-                        levelLoader_Reload.ReloadCurrentScene();
-                    }
-                }
+                player.DoInfoBarAnimation();              
             }
             return;
         }
@@ -117,6 +99,32 @@ public class FightManager : MonoBehaviour
         }
 
         HandleTurn();
+    }
+
+    private void DoSceneChange()
+    {
+        if (background.tierRematch)
+        {
+            background.tierRematch = false;
+            if (enemy.tier >= 4)
+            {
+                loading = true;
+                levelLoader_EndScreen.BasicLoad();
+            }
+            else
+            {
+                loading = true;
+                levelLoader_Upgrade.BasicLoad();
+            }
+        }
+        else
+        {
+            if (!loading)
+            {
+                background.tierRematch = true;
+                levelLoader_Reload.ReloadCurrentScene();
+            }
+        }
     }
 
     /// <summary>

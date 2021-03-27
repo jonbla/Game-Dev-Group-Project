@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void DoTurn()
     {
+        if (isDead) { return; }
         int tmpdmg = 0;
         print("Enemy turn");
 
@@ -304,6 +305,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        animController.Disable();
         transform.DOShakePosition(1.5f, new Vector3(1, 1, 0)).SetAutoKill(true).OnComplete(LeaveScreen);
     }
 

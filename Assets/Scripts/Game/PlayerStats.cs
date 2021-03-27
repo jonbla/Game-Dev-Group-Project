@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,9 @@ public class PlayerStats : MonoBehaviour
 
 	public Text HPText;
 	public Text MPText;
+
+    public bool readyToKill = false;
+    bool isTweening = false;    
 
 	void Start()
 	{
@@ -47,6 +51,12 @@ public class PlayerStats : MonoBehaviour
         
         HPText.text = currentHP.ToString() + "/" + maxHP.ToString();
         MPText.text = currentMP.ToString() + "/" + maxMP.ToString();
+
+        if (isTweening)
+        {
+            healthBar.SetHealth(Mathf.RoundToInt(currentHP), maxHP);
+            magicBar.SetMagic(Mathf.RoundToInt(currentMP), maxMP);
+        }
 	}
 
     /// <summary>
@@ -116,6 +126,23 @@ public class PlayerStats : MonoBehaviour
         {
             UseMagic(-1);
         }
+    }
+
+    public void DoInfoBarAnimation()
+    {
+        if (isTweening)
+        {
+            return;
+        }
+        isTweening = true;
+        DOTween.To(() => currentHP, x => currentHP = x, 100, 2).SetAutoKill(true);
+        DOTween.To(() => currentMP, x => currentMP = x, 50, 2).SetAutoKill(true).OnComplete(ReportFinishedAnimation);
+    }
+
+    void ReportFinishedAnimation()
+    {
+        isTweening = false;
+        readyToKill = true;
     }
 
 }
