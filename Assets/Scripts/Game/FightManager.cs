@@ -102,25 +102,24 @@ public class FightManager : MonoBehaviour
     }
 
     private void DoSceneChange()
-    {
+    {        
         if (background.tierRematch)
         {
             background.tierRematch = false;
-            if (enemy.tier >= 4)
-            {
-                loading = true;
-                levelLoader_EndScreen.BasicLoad();
-            }
-            else
-            {
-                loading = true;
-                levelLoader_Upgrade.BasicLoad();
-            }
+            
+            loading = true;
+            levelLoader_Upgrade.BasicLoad();
         }
         else
         {
             if (!loading)
             {
+                if (enemy.tier >= 4)
+                {
+                    loading = true;
+                    levelLoader_EndScreen.BasicLoad();
+                }
+
                 background.tierRematch = true;
                 levelLoader_Reload.ReloadCurrentScene();
             }
