@@ -64,35 +64,46 @@ public class FightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!isFightActive)
+        {
+            if (enemy.isDead)
+            {
+                if (background.tierRematch)
+                {
+                    background.tierRematch = false;
+                    if (enemy.tier >= 4)
+                    {
+                        loading = true;
+                        levelLoader_EndScreen.BasicLoad();
+                    }
+                    else
+                    {
+                        loading = true;
+                        levelLoader_Upgrade.BasicLoad();
+                    }
+                }
+                else
+                {
+                    if (!loading)
+                    {
+                        background.tierRematch = true;
+                        levelLoader_Reload.ReloadCurrentScene();
+                    }
+                }
+            }
+            return;
+        }
+
         if(enemy.GetCurrentHP() <= 0f)
         {
             print("Enemy: "+enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
-
-            if (background.tierRematch)
-            {
-                background.tierRematch = false;
-                if (enemy.tier >= 4)
-                {
-                    loading = true;
-                    levelLoader_EndScreen.BasicLoad();                   
-                }
-                else
-                {
-                    loading = true;
-                    levelLoader_Upgrade.BasicLoad();
-                }
-            }
-            else
-            {
-                if (!loading)
-                {
-                    background.tierRematch = true;
-                    levelLoader_Reload.ReloadCurrentScene();
-                }
-            }                    
+            enemy.Die();
+            return;
+                                
         }
 
         if(player.GetCurrentHP() <= 0f)
