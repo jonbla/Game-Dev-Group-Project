@@ -1299,6 +1299,7 @@ MonoBehaviour:
   magicBar: {fileID: 890948488}
   HPText: {fileID: 479037828}
   MPText: {fileID: 520879283}
+  readyToKill: 0
 --- !u!1 &376783638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1840,8 @@ RectTransform:
   m_Children:
   - {fileID: 66315700}
   - {fileID: 554157054}
+  - {fileID: 479037826}
+  - {fileID: 520879285}
   - {fileID: 1915750119}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2007,13 +2010,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1915750119}
-  m_RootOrder: 0
+  m_Father: {fileID: 459158619}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -480.47943, y: -362.50122}
-  m_SizeDelta: {x: 959.0411, y: 47.0025}
+  m_AnchorMin: {x: 0, y: 0.14214815}
+  m_AnchorMax: {x: 0.5, y: 0.18662968}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.000015258789, y: 0.000015258789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &479037827
 CanvasRenderer:
@@ -2337,13 +2340,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1915750119}
-  m_RootOrder: 1
+  m_Father: {fileID: 459158619}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 478.56, y: -362.50122}
-  m_SizeDelta: {x: 959.0411, y: 47.0025}
+  m_AnchorMin: {x: 0.5, y: 0.14214815}
+  m_AnchorMax: {x: 1, y: 0.18662968}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.000015258789, y: 0.000015258789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &554157053
 GameObject:
@@ -2823,7 +2826,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1915750119}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3789,7 +3792,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 124a74283733c8d4e822bb2de0c11367, type: 3}
     name: Dragon Horn
   - image: {fileID: 21300000, guid: 4ca1d57b88546e74db0fd8814067142a, type: 3}
-    name: Boss Dragon
+    name: Dragon
   - image: {fileID: 21300000, guid: f3188a8b45d2d5349842fca792bfd06d, type: 3}
     name: Cockatrice
   - image: {fileID: 21300000, guid: 36888106db0264946b8effc052ea6d62, type: 3}
@@ -4389,6 +4392,7 @@ MonoBehaviour:
   row1: {fileID: 1977059914}
   row2: {fileID: 1157692544}
   musicController: {fileID: 0}
+  popupPrefab: {fileID: 1095633803175328888, guid: 99a3fbc51c54f1b48bae766dcce29b9c, type: 3}
 --- !u!1 &1478253869
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,7 +5061,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1915750119}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5512,12 +5516,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 479037826}
-  - {fileID: 520879285}
   - {fileID: 603205729}
   - {fileID: 1856772906}
   m_Father: {fileID: 459158619}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

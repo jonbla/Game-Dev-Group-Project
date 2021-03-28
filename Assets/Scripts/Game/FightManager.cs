@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -62,40 +61,39 @@ public class FightManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-        if(enemy.GetCurrentHP() <= 0f)
+        //Prevents boss from spawning twice
+        if (enemy.tier >= 4)
         {
-            print("Enemy: "+enemy.GetCurrentHP());
+            background.tierRematch = true;
+        }
+
+        if (!isFightActive)             //if fight is done
+        {
+            if (enemy.isDead)           //wait until enemy animation is done
+            {
+                if (player.readyToKill) //then wait until player healthbar animation is done
+                {
+                    DoSceneChange();
+                }
+                player.DoInfoBarAnimation();
+            }
+            return;
+        }        
+
+        if (enemy.GetCurrentHP() <= 0f)
+        {
+            print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
-
-            if (background.tierRematch)
-            {
-                background.tierRematch = false;
-                if (enemy.tier >= 4)
-                {
-                    loading = true;
-                    levelLoader_EndScreen.BasicLoad();                   
-                }
-                else
-                {
-                    loading = true;
-                    levelLoader_Upgrade.BasicLoad();
-                }
-            }
-            else
-            {
-                if (!loading)
-                {
-                    background.tierRematch = true;
-                    levelLoader_Reload.ReloadCurrentScene();
-                }
-            }                    
+            enemy.Die();
+            return;
         }
 
-        if(player.GetCurrentHP() <= 0f)
+        if (player.GetCurrentHP() <= 0f)
         {
             print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
@@ -106,6 +104,32 @@ public class FightManager : MonoBehaviour
         }
 
         HandleTurn();
+    }
+
+    private void DoSceneChange()
+    {
+        if (background.tierRematch)
+        {
+            background.tierRematch = false;
+            if (enemy.tier >= 4)
+            {
+                loading = true;
+                levelLoader_EndScreen.BasicLoad();
+            }
+            else
+            {
+                loading = true;
+                levelLoader_Upgrade.BasicLoad();
+            }
+        }
+        else
+        {
+            if (!loading)
+            {
+                background.tierRematch = true;
+                levelLoader_Reload.ReloadCurrentScene();
+            }
+        }
     }
 
     /// <summary>
@@ -151,11 +175,18 @@ public class FightManager : MonoBehaviour
             alreadyOn = true;
             playerButtons.SetActive(false);
             yield return new WaitForSeconds(1);
-            enemy.DoTurn();
-            yield return new WaitForSeconds(.5f);
-            ToggleTurn();
-            alreadyOn = false;
-            playerButtons.SetActive(true);
+            if (isFightActive)
+            {
+                enemy.DoTurn();
+                yield return new WaitForSeconds(.5f);
+                ToggleTurn();
+                alreadyOn = false;
+                playerButtons.SetActive(true);
+            }
+            else
+            {
+                playerButtons.SetActive(false);
+            }            
         }
 
     }

@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     private int dmg;
     public MusicController musicController;
 
+    public GameObject popupPrefab;
+
     //Set the default configuration on start
     private void Start()
     {
@@ -106,6 +108,7 @@ public class UIManager : MonoBehaviour
         if (player.GetCurrentMP() < spellOne.cost)
         {
             print("no mana, no spell, no damage. Sorry");
+            PlayerFeedback("No Mana");
             FightMenu();
             return;
         }
@@ -166,10 +169,30 @@ public class UIManager : MonoBehaviour
         else
         {
             print("Kick missed! No damage done.");
+            PlayerFeedback("Miss!");
         }
         
         fightManager.ToggleTurn();
 
         FightMenu();
+    }
+
+    void PlayerFeedback(string text)
+    {
+        TextMeshPro feedbackTextObject = Instantiate(popupPrefab).GetComponent<TextMeshPro>();
+        feedbackTextObject.text = text;
+    }
+
+    public void DeactivateAll()
+    {
+        Attack.SetActive(false);
+        Magic.SetActive(false);
+        Flee.SetActive(false);
+        row1.SetActive(false);
+        row2.SetActive(false);
+
+        Punch.SetActive(false);
+        Kick.SetActive(false);
+        CastSpell.SetActive(false);
     }
 }
