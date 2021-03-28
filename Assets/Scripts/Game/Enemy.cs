@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public MusicController musicController;
     public Text HPText;
     public Text MPText;
+    UIManager UI;
 
     public damageBump animController;
 
@@ -59,11 +60,13 @@ public class Enemy : MonoBehaviour
 
         musicController = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
 
+        UI = GameObject.Find("Code").transform.Find("UI Manager").GetComponent<UIManager>();
+
         //Left these commented out, since enemy stats are hidden
         //if we want to display stats, uncomment these lines
         //HPText.text = health.ToString() + "/" + maxHealth.ToString();
         //MPText.text = mana.ToString() + "/" + maxMana.ToString();
-        
+
     }
     void Update(){
     	UpdateStatBars();
@@ -306,6 +309,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         animController.Disable();
+        UI.DeactivateAll();
         transform.DOShakePosition(1.5f, new Vector3(1, 1, 0)).SetAutoKill(true).OnComplete(LeaveScreen);
     }
 

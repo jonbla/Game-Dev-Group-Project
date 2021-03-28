@@ -91,7 +91,6 @@ public class FightManager : MonoBehaviour
             isFightActive = false;
             enemy.Die();
             return;
-
         }
 
         if (player.GetCurrentHP() <= 0f)
@@ -176,11 +175,18 @@ public class FightManager : MonoBehaviour
             alreadyOn = true;
             playerButtons.SetActive(false);
             yield return new WaitForSeconds(1);
-            enemy.DoTurn();
-            yield return new WaitForSeconds(.5f);
-            ToggleTurn();
-            alreadyOn = false;
-            playerButtons.SetActive(true);
+            if (isFightActive)
+            {
+                enemy.DoTurn();
+                yield return new WaitForSeconds(.5f);
+                ToggleTurn();
+                alreadyOn = false;
+                playerButtons.SetActive(true);
+            }
+            else
+            {
+                playerButtons.SetActive(false);
+            }            
         }
 
     }

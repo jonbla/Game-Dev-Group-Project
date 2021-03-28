@@ -182,4 +182,17 @@ public class UIManager : MonoBehaviour
         TextMeshPro feedbackTextObject = Instantiate(popupPrefab).GetComponent<TextMeshPro>();
         feedbackTextObject.text = text;
     }
+
+    public void DeactivateAll()
+    {
+        Attack.SetActive(false);
+        Magic.SetActive(false);
+        Flee.SetActive(false);
+        row1.SetActive(false);
+        row2.SetActive(false);
+
+        Punch.SetActive(false);
+        Kick.SetActive(false);
+        CastSpell.SetActive(false);
+    }
 }
