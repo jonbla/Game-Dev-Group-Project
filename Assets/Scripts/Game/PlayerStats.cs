@@ -54,8 +54,11 @@ public class PlayerStats : MonoBehaviour
 
         if (isTweening)
         {
-            healthBar.SetHealth(Mathf.RoundToInt(currentHP), maxHP);
-            magicBar.SetMagic(Mathf.RoundToInt(currentMP), maxMP);
+            healthBar.SetHealth(currentHP, maxHP);
+            magicBar.SetMagic(currentMP, maxMP);
+
+            HPText.text = Mathf.RoundToInt(currentHP).ToString() + "/" + maxHP.ToString();
+            MPText.text = Mathf.RoundToInt(currentMP).ToString() + "/" + maxMP.ToString();
         }
 	}
 
@@ -135,8 +138,8 @@ public class PlayerStats : MonoBehaviour
             return;
         }
         isTweening = true;
-        DOTween.To(() => currentHP, x => currentHP = x, 100, 2).SetAutoKill(true);
-        DOTween.To(() => currentMP, x => currentMP = x, 50, 2).SetAutoKill(true).OnComplete(ReportFinishedAnimation);
+        DOTween.To(() => currentHP, x => currentHP = x, maxHP, 2).SetAutoKill(true);
+        DOTween.To(() => currentMP, x => currentMP = x, maxMP/2, 2).SetAutoKill(true).OnComplete(ReportFinishedAnimation);
     }
 
     void ReportFinishedAnimation()

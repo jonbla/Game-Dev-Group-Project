@@ -61,34 +61,40 @@ public class FightManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-
-        if (!isFightActive)
+        //Prevents boss from spawning twice
+        if (enemy.tier >= 4)
         {
-            if (enemy.isDead)
+            background.tierRematch = true;
+        }
+
+        if (!isFightActive)             //if fight is done
+        {
+            if (enemy.isDead)           //wait until enemy animation is done
             {
-                if (player.readyToKill)
+                if (player.readyToKill) //then wait until player healthbar animation is done
                 {
                     DoSceneChange();
                 }
-                player.DoInfoBarAnimation();              
+                player.DoInfoBarAnimation();
             }
             return;
-        }
+        }        
 
-        if(enemy.GetCurrentHP() <= 0f)
+        if (enemy.GetCurrentHP() <= 0f)
         {
-            print("Enemy: "+enemy.GetCurrentHP());
+            print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
 
             isFightActive = false;
             enemy.Die();
             return;
-                                
+
         }
 
-        if(player.GetCurrentHP() <= 0f)
+        if (player.GetCurrentHP() <= 0f)
         {
             print("Enemy: " + enemy.GetCurrentHP());
             print("Player: " + player.GetCurrentHP());
@@ -102,24 +108,25 @@ public class FightManager : MonoBehaviour
     }
 
     private void DoSceneChange()
-    {        
+    {
         if (background.tierRematch)
         {
             background.tierRematch = false;
-            
-            loading = true;
-            levelLoader_Upgrade.BasicLoad();
+            if (enemy.tier >= 4)
+            {
+                loading = true;
+                levelLoader_EndScreen.BasicLoad();
+            }
+            else
+            {
+                loading = true;
+                levelLoader_Upgrade.BasicLoad();
+            }
         }
         else
         {
             if (!loading)
             {
-                if (enemy.tier >= 4)
-                {
-                    loading = true;
-                    levelLoader_EndScreen.BasicLoad();
-                }
-
                 background.tierRematch = true;
                 levelLoader_Reload.ReloadCurrentScene();
             }

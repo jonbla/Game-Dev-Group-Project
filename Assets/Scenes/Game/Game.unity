@@ -1299,6 +1299,7 @@ MonoBehaviour:
   magicBar: {fileID: 890948488}
   HPText: {fileID: 479037828}
   MPText: {fileID: 520879283}
+  readyToKill: 0
 --- !u!1 &376783638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3789,7 +3790,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 124a74283733c8d4e822bb2de0c11367, type: 3}
     name: Dragon Horn
   - image: {fileID: 21300000, guid: 4ca1d57b88546e74db0fd8814067142a, type: 3}
-    name: Boss Dragon
+    name: Dragon
   - image: {fileID: 21300000, guid: f3188a8b45d2d5349842fca792bfd06d, type: 3}
     name: Cockatrice
   - image: {fileID: 21300000, guid: 36888106db0264946b8effc052ea6d62, type: 3}
